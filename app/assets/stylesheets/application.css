@@ -37,3 +37,13 @@ body {
   box-shadow: none;
   -webkit-box-shadow: none;
 }
+
+.jumbotron {
+  height: 300px;
+}
+
+@media screen and (max-width: 460px) {
+  .navbar-email {
+    display: none;
+  }
+}
