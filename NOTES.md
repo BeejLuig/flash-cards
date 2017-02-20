@@ -65,7 +65,7 @@ attr_accessor
 
 **Folder**
 
-has_and_belongs_to_many :study_sets (through study_sets_folders
+has_and_belongs_to_many :study_sets (through study_sets_folders)
 belongs_to :user
 
 attr_accessor :name
