@@ -12,8 +12,9 @@
         </button>
         <a class="navbar-brand" href="/">Flash Cards</a>
         <a class="navbar-brand" href="#">
-          <img alt="Brand" src="...">
+          <img alt="Brand" src="<%= @request.info.image if !@request.blank? %>" style="width: 30px; margin: -5px auto;border-radius: 30px;top:5px;">
         </a>
+          <a class="navbar-brand" href="/"><%= "Hi, #{@request.info.first_name}!" if !@request.blank? %></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
