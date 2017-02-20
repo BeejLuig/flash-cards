@@ -26,49 +26,70 @@ A user can update their user info
 A user can use "study mode" and "quiz mode" features for their collections
 
 ##Models
+
 **User**
-scope user
-validates email, password
-has_many flash_cards
-has_many collections
+
+scope: [:owner, :studier]
+
+has_many :study_sets
+has_many :folders
+has_many :flash_cards, through: :study_sets
+
+attr_accessor
+:name,
+:email,
+:password
+
+**StudySet** 
+
+belongs_to :user, as: :owner
+has_many :users, as: :studiers
+has_and_belongs_to_many :folders (through study_sets_folders)
+
+has_many :flash_cards
+
+attr_accessor
+:title,
+:description,
+:user_id,
+:timestamp
 
 **FlashCard**
-attributes:
-- question
-- answer
-- owner_id
-- author_id
-- original (bool)
-- copy_count
+
+belongs_to :study_set
+
+attr_accessor
+:term,
+:definition,
+:is_starred
+
+**Folder**
+
+has_and_belongs_to_many :study_sets (through study_sets_folders
+belongs_to :user
+
+attr_accessor :name
 
 
-has_many categories, through flash_card_categories
-belongs_to user, as: owner
-belongs_to user, as: author
-has_many collections, through flash_card_collections
+**study_sets_folders** (join table, no model required)
 
-**Collection**
-attributes:
-- name
+belongs_to :folder
+belongs_to :study_set
 
-belongs_to user, as: owner
-belongs_to user, as: author
-has_many flash_cards, through flash_card_collections
-has_many categories, through flash_cards
 
-**Category**
-attributes:
-- name  
+##SEARCH FUNCTION
 
-has_many flash_cards, through flash_card_categories
+Split search words into array
+match against study set titles
+match against flash card titles
 
-**FlashCardCollections**
-belongs_to flash_card
-belongs_to collection
+Sanitize search query into a slug
+redirect to subject/#{slug}
 
-**FlashCardCategories**
-belongs_to flash_card
-belongs_to categories
+show list of titles in the view, sorted by most relevant (has the most studiers)
+give option to sort by most recent (created at timestamp)
+
+
 
 ##Controllers
 
