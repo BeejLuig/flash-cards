@@ -11,10 +11,12 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Flash Cards</a>
-        <a class="navbar-brand" href="#">
-          <img alt="Brand" src="<%= @request.info.image if !@request.blank? %>" style="width: 30px; margin: -5px auto;border-radius: 30px;top:5px;">
-        </a>
-          <a class="navbar-brand" href="/"><%= "Hi, #{@request.info.first_name}!" if !@request.blank? %></a>
+        <% if !@request.blank? %>
+          <a class="navbar-brand" href="#">
+            <img alt="user image" src="<%= current_user %>" style="width: 30px; margin: -5px auto;border-radius: 30px;top:5px;">
+          </a>
+          <a class="navbar-brand" href="/"><%= current_user.email %></a>
+        <% end %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
