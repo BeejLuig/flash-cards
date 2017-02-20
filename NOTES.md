@@ -14,7 +14,7 @@
 ##Gems
 
 Use devise for logging in/out
-Use omniauth for OAuth (log in with Google?)
+Use omniauth for Google OAuth2
 Use pundit for permissions?
 
 **Policies**
