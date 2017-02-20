@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+body {
+  text-align: center;
+}
+
+.new_user {
+  max-width: 400px;
+  margin: 0 auto;
+}
