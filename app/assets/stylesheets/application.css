@@ -21,3 +21,19 @@ body {
   max-width: 400px;
   margin: 0 auto;
 }
+
+.flash-messages {
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  top: 60px;
+  font-size: 15px;
+  border: none;
+}
+
+.flash-messages, .notice, .alert {
+  background: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}

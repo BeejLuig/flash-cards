@@ -10,9 +10,9 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">Flash Cards</a>
-      <% if !@request.blank? %>
+      <% if current_user %>
         <a class="navbar-brand" href="/">
-          <img alt="user image" src="<%= current_user %>" style="width: 30px; margin: -5px auto;border-radius: 30px;top:5px;">
+          <img alt="user image" src="<%= current_user.image %>" style="width: 30px; margin: -5px auto;border-radius: 30px;top:5px;">
         </a>
         <a class="navbar-brand" href="/"><%= current_user.email %></a>
       <% end %>
