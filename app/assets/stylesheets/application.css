@@ -23,13 +23,13 @@ body {
 }
 
 .flash-messages {
-  z-index: 1000;
-  position: absolute;
+  position: sticky;
   width: 100%;
-  margin: 0 auto;
-  top: 60px;
+  margin: 12px auto;
+  top: 20px;
   font-size: 15px;
   border: none;
+  background: none;
 }
 
 .flash-messages, .notice, .alert {
@@ -44,6 +44,12 @@ body {
 
 @media screen and (max-width: 460px) {
   .navbar-email {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .flash-messages {
     display: none;
   }
 }
