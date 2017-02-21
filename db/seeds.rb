@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+@user = User.create(email: "test@test.com", password: "password")
+
+5.times do |i|
+  @user.folders.create(name: "Folder #{i}")
+end
+
+5.times do |i|
+  @user.study_sets.create(title: "Study Set #{i}", description: "Description #{i}")
+end
