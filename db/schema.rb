@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221025951) do
+ActiveRecord::Schema.define(version: 20170221032016) do
+
+  create_table "folders", force: :cascade do |t|
+    t.string  "name"
+    t.integer "user_id"
+  end
+
+  create_table "folders_study_sets", force: :cascade do |t|
+    t.integer "folder_id"
+    t.integer "study_set_id"
+  end
 
   create_table "study_sets", force: :cascade do |t|
     t.string   "title"
