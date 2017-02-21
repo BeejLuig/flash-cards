@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221035922) do
+ActiveRecord::Schema.define(version: 20170221203621) do
 
   create_table "flash_cards", force: :cascade do |t|
     t.integer "study_set_id"
@@ -32,10 +32,14 @@ ActiveRecord::Schema.define(version: 20170221035922) do
   create_table "study_sets", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_study_sets_on_user_id"
+    t.integer  "owner_id"
+  end
+
+  create_table "study_sets_users", force: :cascade do |t|
+    t.integer "study_set_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
