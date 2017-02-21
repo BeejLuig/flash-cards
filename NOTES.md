@@ -36,11 +36,11 @@ has_many :folders
 has_many :flash_cards, through: :study_sets
 
 attr_accessor
-:name,
 :email,
-:password
+:password,
+:image
 
-**StudySet** 
+**StudySet**
 
 belongs_to :user, as: :owner
 has_many :users, as: :studiers
