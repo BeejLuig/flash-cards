@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221032016) do
+ActiveRecord::Schema.define(version: 20170221034815) do
+
+  create_table "flash_cards", force: :cascade do |t|
+    t.integer "study_set_id"
+    t.string  "term"
+    t.string  "definition"
+    t.boolean "is_starred",   default: false
+  end
 
   create_table "folders", force: :cascade do |t|
     t.string  "name"
