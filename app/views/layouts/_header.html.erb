@@ -22,9 +22,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/users/sign_up">Sign up</a></li>
-        <li><a href="/users/sign_in">Sign in</a></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% if current_user %>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><a href="/users/sign_up">Sign up</a></li>
+          <li><a href="/users/sign_in">Sign in</a></li>
+        <% end %>
       </ul>
 
     </div><!-- /.navbar-collapse -->
