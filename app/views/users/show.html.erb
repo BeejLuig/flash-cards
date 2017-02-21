@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Welcome <span id="user-email-h1"><%= current_user.email %></span></h1>
+    </div>
+    <div class="col-md-4 col-md-offset-2">
+      <h2>Study Sets</h2>
+      <% @study_sets.each do |study_set| %>
+      <% end %>
+      <div class="crud-links">
+        <%= link_to "New study set", new_study_set_path %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h2>Folders</h2>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="crud-links">
+        <%= link_to "Back", root_path %> | <%= link_to "Edit account", edit_user_path(current_user) %> | <%= link_to "Delete account", user_path(current_user), method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>

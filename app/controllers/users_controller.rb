@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @study_sets = current_user.study_sets
   end
 
   def edit
