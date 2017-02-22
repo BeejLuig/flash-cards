@@ -7,6 +7,7 @@ class StudySetsController < ApplicationController
   end
 
   def index
+    @study_sets = StudySet.all
   end
 
   def new

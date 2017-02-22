@@ -1,0 +1,43 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Flash Cards</h1>
+    <p class="lead">Browse user-generated flash cards or create your own</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+  <div class="col-md-12">
+    <div class="search-bar">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Search</button>
+        </span>
+      </div><!-- /input-group -->
+    </div><!-- /.search-bar -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+  <div class="row">
+    <div class="col-md-4">
+        <% @study_sets.each_with_index do |set, i| %>
+          <% if i % 3 == 0 %>
+            <%= render :partial => 'study_sets', locals: { study_set: set } %>
+          <% end %>
+        <% end %>
+    </div>
+    <div class="col-md-4">
+      <% @study_sets.each_with_index do |set, i| %>
+        <% if i % 3 == 1 %>
+          <%= render :partial => 'study_sets', locals: { study_set: set } %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <% @study_sets.each_with_index do |set, i| %>
+        <% if i % 3 == 2 %>
+          <%= render :partial => 'study_sets', locals: { study_set: set } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
