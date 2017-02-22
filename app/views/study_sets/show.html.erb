@@ -34,20 +34,8 @@
     </div>
   </div><!-- row -->
 
-  <div class="row">
-    <div class="container flash-card">
-      <div class="col-md-6">
-        <div class="term-text">
-          <h3>Term</h3>
-        </div>
-      </div>
+  <% 10.times do %>
+    <%= render 'flash_card' %>
+  <% end %>
 
-      <div class="col-md-6">
-        <div class="definition-text">
-          <h3>Definition</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
+</div><!-- study-sets-container
