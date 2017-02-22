@@ -40,6 +40,18 @@
   border-right: 1px solid #ccc;
 }
 
+.definition-text {
+  display: inline-block;
+  width: 80%;
+  margin-right: 0;
+}
+
+.star {
+  float: right;
+  width: 20%;
+  margin: 0;
+}
+
 .flash-card {
   box-sizing: border-box;
   padding: 1em 0 1em 0.6em;
@@ -54,4 +66,17 @@
 
 .flash-card {
   box-shadow: 2px 2px 20px #ccc;
+}
+
+polygon {
+  cursor: pointer;
+  fill: #d8d8d8;
+}
+
+polygon:hover {
+  fill: yellow;
+}
+
+.starred {
+  fill: yellow;
 }
