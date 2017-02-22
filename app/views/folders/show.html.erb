@@ -1,0 +1,7 @@
+<h1><%= @folder.name %></h1>
+<p>Study sets</p>
+<% if @folder.study_sets%>
+  <% @folder.study_sets.each do |set| %>
+    <p><%= link_to set.title, study_set_path(set) %></p>
+  <% end %>
+<% end %>
