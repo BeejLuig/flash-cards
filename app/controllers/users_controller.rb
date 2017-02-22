@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def update
   end
@@ -11,7 +11,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @study_sets = current_user.study_sets
-    @folders = current_user.folders
+    @user = User.find_by_id(params[:id])
+
+    if user_signed_in? && current_user
+      @user = current_user
+    end
+    @study_sets = @user.study_sets
+    @folders = @user.folders
   end
 end

@@ -7,6 +7,43 @@
   margin: 0 auto 20px auto;
 }
 
-.Homepage-studySet {
-    margin-top: 2rem;
+.study-sets-container {
+  background: #f0f0f0;
+  width: 100vw;
+}
+
+#study-set-title {
+  margin-bottom: 0;
+  background: white;
+}
+
+#sort {
+  width: 66%;
+  float: right;
+}
+
+.sort-controls {
+  padding:20px;
+}
+
+.sort-controls label {
+  display: inline;
+}
+
+.term-text, .definition-text {
+  text-align: left;
+  width: 100%;
+  min-height: 5em;
+}
+
+.term-text {
+  border-right: 1px solid #ccc;
+}
+
+.flash-card {
+  box-sizing: border-box;
+  padding: 1em 0 1em 0.6em;
+  border: 1px solid #eee;
+  background: #fff;
+  min-height: 6em;
 }
