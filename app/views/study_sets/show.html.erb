@@ -1,8 +1,9 @@
 
 <div class="jumbotron" id="study-set-title">
-  <span class="term-count">10 terms</span>
-  <span class="separator"> | </span><span class="study-set-owner">Example User</span>
-  <h1>Study Set</h1>
+  <span class="flash-card-count"><%= pluralize(@flash_cards.count, "flash card") %></span>
+  <span class="separator"> | </span><span class="study-set-owner"><%= @study_set.owner.email %></span>
+  <h1><%= @study_set.title %></h1>
+  <h2><%= @study_set.description if @study_set.description %></h2>
 </div>
 
 

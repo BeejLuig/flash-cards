@@ -14,6 +14,8 @@ class StudySetsController < ApplicationController
   end
 
   def show
+    @study_set = StudySet.find_by_id(params[:id])
+    @flash_cards = @study_set.flash_cards
   end
 
   def edit
