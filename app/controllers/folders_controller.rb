@@ -1,5 +1,6 @@
 class FoldersController < ApplicationController
   def create
+    redirect_to user_path(current_user)
   end
 
   def new
@@ -15,5 +16,8 @@ class FoldersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def index
   end
 end
