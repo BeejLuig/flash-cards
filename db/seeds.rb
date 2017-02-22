@@ -14,3 +14,9 @@ end
 5.times do |i|
   @user.study_sets.create(title: "Study Set #{i}", description: "Description #{i}", owner: @user)
 end
+
+StudySet.all.each do |set|
+  5.times do |i|
+    set.flash_cards.create(term: "Term #{i}", definition: "Definition #{i}")
+  end
+end

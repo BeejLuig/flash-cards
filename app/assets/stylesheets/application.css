@@ -42,6 +42,22 @@ body {
   height: 300px;
 }
 
+#edit_user {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#cancel-account {
+  border: 1px solid gray;
+  margin: 0 auto;
+  margin-top: 2em;
+  width: 400px;
+  padding-bottom: 1em;
+  border-radius: 20px;
+  color: rgba(200, 0, 0, 0.6);
+}
+
 @media screen and (max-width: 460px) {
   .navbar-email {
     display: none;
