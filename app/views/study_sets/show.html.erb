@@ -35,8 +35,8 @@
     </div>
   </div><!-- row -->
 
-  <% 10.times do %>
-    <%= render 'flash_card' %>
+  <% @flash_cards.each do |card| %>
+    <%= render partial: 'flash_card', locals: {flash_card: card} %>
   <% end %>
 
 </div><!-- study-sets-container
