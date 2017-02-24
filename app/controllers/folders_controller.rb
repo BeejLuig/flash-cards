@@ -12,12 +12,21 @@ class FoldersController < ApplicationController
   end
 
   def new
+    @folder = current_user.folders.build
   end
 
   def update
+    @folder = Folder.find_by_id(params[:id])
+    study_sets = study_sets = folder_params[:study_set_ids].map { |set_id| StudySet.find_by_id(set_id) }.compact
+    if @folder.update(name: folder_params[:name], study_sets: study_sets)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
   end
 
   def edit
+    @folder = Folder.find_by_id(params[:id])
   end
 
   def show

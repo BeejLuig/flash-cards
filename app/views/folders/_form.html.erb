@@ -1,7 +1,18 @@
-<h2>New folder</h2>
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
-    <%= form_for :folder, url: folders_path do |f| %>
+
+    <% if @folder.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= pluralize(@folder.errors.count, "error") %> prohibited this article from being saved:</h3>
+        <ul>
+          <% @folder.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_for @folder do |f| %>
 
       <div class="form-group">
         <%= f.label "name"%>
@@ -16,7 +27,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.submit "Create folder", class: "btn btn-default" %>
+        <%= f.submit "Submit", class: "btn btn-default" %>
       </div>
     <% end %>
   </div>

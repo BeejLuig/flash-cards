@@ -1,7 +1,12 @@
 <h1><%= @folder.name %></h1>
-<p>Study sets</p>
-<% if @folder.study_sets%>
-  <% @folder.study_sets.each do |set| %>
-    <p><%= link_to set.title, study_set_path(set) %></p>
+<ul class="study-set-list">
+  <h2>Study Sets</h2>
+  <% if !@folder.study_sets.blank? %>
+    <% @folder.study_sets.each do |set| %>
+      <li><%= link_to set.title, study_set_path(set) %></li>
+    <% end %>
+  <% else %>
+    <li>You have no study sets in this folder. <%= link_to "Add some", edit_folder_path(@folder)%></li>
   <% end %>
-<% end %>
+</ul>
+<p><%= link_to "Edit folder", edit_folder_path(@folder) %></p>
