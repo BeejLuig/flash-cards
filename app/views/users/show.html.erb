@@ -6,7 +6,7 @@
     <div class="col-md-4 col-md-offset-2">
       <h2>Study Sets</h2>
       <% @study_sets.each do |study_set| %>
-        <p><%= study_set.title %></p>
+        <p><%= study_set.title %> | <%= link_to "Edit", edit_study_set_path(study_set) %> | <%= link_to "Destroy", destroy_study_set_path(study_set), method: "delete" %></p>
       <% end %>
       <div class="crud-links">
         <%= link_to "New study set", new_study_set_path if current_user == @user %>
@@ -15,7 +15,7 @@
     <div class="col-md-4">
       <h2>Folders</h2>
       <% @folders.each do |folder| %>
-        <p><%= link_to folder.name, folder_path(folder) %></p>
+        <p><%= link_to folder.name, folder_path(folder) %>  | <%= link_to "Edit", edit_folder_path(folder) %> | <%= link_to "Destroy", folder_path(folder), method: "delete" %></p>
       <% end %>
       <%= link_to "New folder", new_folder_path if current_user == @user %>
     </div>

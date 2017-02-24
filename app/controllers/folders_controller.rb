@@ -34,6 +34,10 @@ class FoldersController < ApplicationController
   end
 
   def destroy
+    @folder = Folder.find_by_id(params[:id])
+    @folder.destroy
+    flash[:notice] = "#{@folder.name} successfully destroyed"
+    redirect_to user_path(current_user)
   end
 
   def index
