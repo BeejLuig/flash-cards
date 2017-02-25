@@ -46,8 +46,14 @@ class StudySetsController < ApplicationController
   def destroy
   end
 
-  def add_flash_card
-    render :new
+  def sort
+    @study_set = StudySet.find_by_id(params[:id])
+    if params[:sort] == "Alphabetical"
+      @flash_cards = @study_set.flash_cards.sort_by {|fs| fs.term }
+    else
+      @flash_cards = @study_set.flash_cards
+    end
+    render :show
   end
 
   private
