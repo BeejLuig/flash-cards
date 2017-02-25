@@ -37,6 +37,9 @@ class StudySetsController < ApplicationController
   end
 
   def destroy
+    study_set = StudySet.find_by_id(params[:id])
+    study_set.destroy
+    redirect_to user_path(current_user)
   end
 
   def sort
