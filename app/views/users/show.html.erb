@@ -4,7 +4,7 @@
       <h1><%= "Welcome" if @user == current_user %> <%= "Profile for" if !current_user %> <span id="user-email-h1"><%= @user.email %></span></h1>
     </div>
     <div class="col-md-4 col-md-offset-2">
-      <h2>Study Sets</h2>
+      <h2>Your Study Sets</h2>
       <% @study_sets.each do |study_set| %>
         <p><%= link_to study_set.title, study_set_path(study_set) %> | <%= link_to "Edit", edit_study_set_path(study_set) %> | <%= link_to "Destroy", study_set_path(study_set), method: "delete" %></p>
       <% end %>

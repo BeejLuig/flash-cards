@@ -8,15 +8,17 @@
 @user = User.create(email: "test@test.com", password: "password")
 
 5.times do |i|
-  @user.folders.create(name: "Folder #{i}")
+  @user.folders.create(name: "Folder #{i+1}")
 end
 
 5.times do |i|
-  @user.study_sets.create(title: "Study Set #{i}", description: "Description #{i}", owner: @user)
+  @user.study_sets.create(title: "Study Set #{i+1}", description: "Description #{i}", owner: @user)
 end
 
 StudySet.all.each do |set|
   5.times do |i|
-    set.flash_cards.create(term: "Term #{i}", definition: "Definition #{i}")
+    set.flash_cards.create(term: "Term #{i+1}", definition: "Definition #{i}")
   end
 end
+
+@user2 = User.create(email: "test2@test.com", password: "password")
