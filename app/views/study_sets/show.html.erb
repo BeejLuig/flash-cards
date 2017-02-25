@@ -8,19 +8,22 @@
 
 
 <div class="study-sets-container">
-
   <div class="row">
-    <div class="col-md-3">
+  <!--  <div class="col-md-3">
       <div class="sort-controls">
-        <div class="form-group">
-          <label for="sort">Sort</label>
-          <select class="form-control" id="sort">
-            <option>Original</option>
-            <option>Alphabetial</option>
-          </select>
-        </div>
-      </div>
-    </div><!-- col-md-3 -->  <div class="col-md-3">
+        <%= form_tag study_set_path(@study_set) do %>
+          <div class="form-group">
+            <label for="sort">Sort</label>
+            <select class="form-control" id="sort">
+              <option>Original</option>
+              <option value="alphabetical">Alphabetial</option>
+            </select>
+          </div>
+        <% end %>
+      </div> 
+    </div> --><!-- col-md-3 -->
+<!--
+    <div class="col-md-3">
         <div class="sort-controls">
           <div class="form-group">
             <label for="sort">Filter</label>
@@ -30,7 +33,7 @@
             </select>
           </div>
         </div>
-      </div><!-- col-md-3 -->
+      </div> --><!-- col-md-3 -->
     <div class="col-md-6">
     </div>
   </div><!-- row -->
