@@ -1,7 +1,7 @@
 class StudySetsController < ApplicationController
 
   def create
-    
+
   end
 
   def update
@@ -12,6 +12,9 @@ class StudySetsController < ApplicationController
   end
 
   def new
+    @flash_card_count =  params[:flash_card_count].to_i || 5
+    @study_set = current_user.study_sets.build
+    @flash_cards = @flash_card_count.times { @study_set.flash_cards.build }
   end
 
   def show
@@ -23,5 +26,9 @@ class StudySetsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def add_flash_card
+    render :new
   end
 end

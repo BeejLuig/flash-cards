@@ -1,0 +1,26 @@
+<%= form_for @study_set do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+  <br>
+  <br>
+  <div class="form-group">
+    <h2>Flash cards</h2>
+    <%= f.nested_fields_for :flash_cards do |flash_card_fields| %>
+      <%= flash_card_fields.label :term %>
+      <%= flash_card_fields.text_field :term, class: "form-control" %>
+      <%= flash_card_fields.label :definition %>
+      <%= flash_card_fields.text_field :definition, class: "form-control" %>
+      <%= flash_card_fields.remove_nested_fields_link 'remove' %>
+      <br>
+      <br>
+    <% end %>
+    <%= f.add_nested_fields_link :flash_cards %>
+  </div>
+<% end %>
