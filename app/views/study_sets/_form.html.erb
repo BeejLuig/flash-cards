@@ -1,26 +1,45 @@
-<%= form_for @study_set do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_field :description, class: "form-control" %>
-  </div>
-  <br>
-  <br>
-  <div class="form-group">
-    <h2>Flash cards</h2>
-    <%= f.nested_fields_for :flash_cards do |flash_card_fields| %>
-      <%= flash_card_fields.label :term %>
-      <%= flash_card_fields.text_field :term, class: "form-control" %>
-      <%= flash_card_fields.label :definition %>
-      <%= flash_card_fields.text_field :definition, class: "form-control" %>
-      <%= flash_card_fields.remove_nested_fields_link 'remove' %>
-      <br>
-      <br>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <% if @study_set.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= pluralize(@study_set.errors.count, "error") %> prohibited this article from being saved:</h3>
+        <ul>
+          <% @study_set.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-    <%= f.add_nested_fields_link :flash_cards %>
+
+    <%= form_for @study_set do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
+      <br>
+      <br>
+      <div class="form-group">
+        <h2>Flash cards</h2>
+        <%= f.nested_fields_for :flash_cards do |flash_card_fields| %>
+          <%= flash_card_fields.label :term %>
+          <%= flash_card_fields.text_field :term, class: "form-control" %>
+          <%= flash_card_fields.label :definition %>
+          <%= flash_card_fields.text_field :definition, class: "form-control" %>
+          <%= flash_card_fields.remove_nested_fields_link 'remove' %>
+          <br>
+          <br>
+        <% end %>
+        <%= f.add_nested_fields_link :flash_cards %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+      </div>
+    <% end %>
+
   </div>
-<% end %>
+</div>

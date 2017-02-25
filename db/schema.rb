@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221203621) do
+ActiveRecord::Schema.define(version: 20170225012152) do
 
   create_table "flash_cards", force: :cascade do |t|
     t.integer "study_set_id"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20170221203621) do
     t.datetime "updated_at",                                                                                                                                      null: false
     t.string   "provider"
     t.string   "uid"
-    t.integer  "study_set_id"
     t.string   "image",                  default: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mr._Smiley_Face.svg/2000px-Mr._Smiley_Face.svg.png"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

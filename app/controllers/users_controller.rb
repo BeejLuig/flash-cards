@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-
     if user_signed_in? && current_user
       @user = current_user
     end
