@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225012152) do
+ActiveRecord::Schema.define(version: 20170225165246) do
 
   create_table "flash_cards", force: :cascade do |t|
     t.integer "study_set_id"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20170225012152) do
   create_table "folders_study_sets", force: :cascade do |t|
     t.integer "folder_id"
     t.integer "study_set_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
   create_table "study_sets", force: :cascade do |t|

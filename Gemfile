@@ -5,6 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#Use Dot Env ot load environment variables
+gem 'dotenv-rails', groups: [:development, :test]
+
+# ActiveRecord Session Store to store larger session sizes
+gem 'activerecord-session_store'
+
 #Nested Form Fields
 gem 'nested_form_fields'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -38,9 +44,6 @@ gem 'jbuilder', '~> 2.5'
 
 #Use Devise for user authentication
 gem 'devise'
-
-#Use Pundit for authorization
-gem 'pundit'
 
 #Use OAuth and Google OAuth
 gem 'omniauth'
