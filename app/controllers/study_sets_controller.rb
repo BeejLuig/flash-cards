@@ -1,13 +1,6 @@
 class StudySetsController < ApplicationController
 
   def create
-#    @study_set = current_user.study_sets.new(title: study_set_params[:title], description: study_set_params[:description])
-#    @study_set.owner = current_user
-#    @study_set.users << current_user
-#    study_set_params[:flash_cards_attributes].each do |key, flash_card|
-#      card = @study_set.flash_cards.new(term: flash_card[:term], definition: flash_card[:definition])
-#      card.study_set = @study_set
-#    end
     @study_set = current_user.study_sets.new(study_set_params)
     if current_user.save
       redirect_to user_path(current_user)
@@ -54,6 +47,12 @@ class StudySetsController < ApplicationController
       @flash_cards = @study_set.flash_cards
     end
     render :show
+  end
+
+  def copy
+    @study_set = StudySet.find_by_id(params[:id])
+    @study_set.make_copy(current_user)
+    redirect_to user_path(current_user)
   end
 
   private

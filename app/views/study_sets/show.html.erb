@@ -4,6 +4,9 @@
   <span class="separator"> | </span><span class="study-set-owner"><%= @study_set.owner.email %></span>
   <h1><%= @study_set.title %></h1>
   <h2><%= @study_set.description if @study_set.description %></h2>
+  <% if user_signed_in? %>
+    <span class="copy-this"><%= link_to "Copy this", "/study_sets/#{@study_set.id}/copy", method: "post" %></span>
+  <% end %>
 </div>
 
 

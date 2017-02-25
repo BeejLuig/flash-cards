@@ -8,11 +8,11 @@ class StudySet < ApplicationRecord
 
   accepts_nested_attributes_for :flash_cards, allow_destroy: true
 
-  def make_copy
+  def make_copy(user)
     copy = self.dup
-    current_user.study_sets << copy
-    copy.owner = current_user
-    current_user.save
+    user.study_sets << copy
+    copy.owner = user
+    user.save
   end
 
 end
