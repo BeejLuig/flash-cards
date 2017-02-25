@@ -15,7 +15,7 @@
  */
 body {
   text-align: center;
-  background: #fff;
+  background: #f0f0f0;
 }
 
 .h1, h1 {
@@ -50,6 +50,7 @@ body {
 
 .jumbotron {
   height: 300px;
+  background: #fff;
 }
 
 .UILinkBox {
@@ -70,6 +71,175 @@ body {
   padding-bottom: 1em;
   border-radius: 20px;
   color: rgba(200, 0, 0, 0.6);
+}
+
+.Homepage-studySet {
+    box-shadow: 0 0.3125rem 1rem 0 rgba(0,0,0,0.24);
+}
+
+.PreviewCardByline {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.285714285714286;
+}
+
+.UIVerticalRule--onWhite {
+    border-right: 0.125rem solid #f0f0f0;
+    display: inline-block;
+    height: 1rem;
+    margin-right: 0.625rem;
+    padding-right: 0.625rem;
+    vertical-align: middle;
+}
+
+.SetPreview-cardBylineCreator, .SetPreview-cardBylineClass {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    z-index: 201;
+}
+
+.UserLink {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.UserLink-inner {
+    display: table;
+}
+
+.UserLink-avatar {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.UILink, .UILink:visited {
+    color: #3ccfcf;
+}
+
+.UserLink-content {
+    display: table-cell;
+    padding-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.UserLink-username {
+    margin-right: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.285714285714286;
+}
+
+.UserAvatar {
+    background: transparent no-repeat center top;
+    background-image: none;
+    background-size: cover;
+    border-radius: 100%;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.24);
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    vertical-align: middle;
+}
+
+.UILinkBox {
+    background-color: #fff;
+    position: relative;
+    -webkit-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -moz-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -ms-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -ms-transition-property: all;
+    transition-property: all;
+    box-sizing: border-box;
+}
+
+.UILinkBox-inner {
+    padding: 1rem 1.875rem;
+}
+
+.UILinkBox-link {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+[class^=UI] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-font-feature-settings: "kern","liga","clig","calt";
+    -ms-font-feature-settings: "kern","liga","clig","alt";
+    -webkit-font-feature-settings: "kern","liga","clig","calt";
+    font-feature-settings: "kern","liga","clig","calt";
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures contextual;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.UILinkBox-link .UILink {
+    border-bottom: 0.3125rem solid rgba(255,255,255,0);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -moz-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -ms-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -ms-transition-property: all;
+    transition-property: all;
+}
+
+.UILink {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    font: inherit;
+    margin-top: 0;
+    outline: none;
+    padding: 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.285714285714286;
+    font-weight: 600;
+    -webkit-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -moz-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -ms-transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    transition: none 120ms cubic-bezier(0.47,0,0.745,0.715);
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -ms-transition-property: all;
+    transition-property: all;
+}
+
+.UILink:active, html.cursor .UILink:hover, html.cursor .UILink:hover:visited {
+    color: #ffcd1f;
+}
+
+.UILinkBox-link .UILink:active, .UILinkBox-link .UILink:focus, .UILinkBox-link .UILink:hover {
+    border-bottom-color: #ffcd1f;
+}
+
+.UILink, .UILink:visited {
+    color: #3ccfcf;
 }
 
 @media screen and (max-width: 460px) {

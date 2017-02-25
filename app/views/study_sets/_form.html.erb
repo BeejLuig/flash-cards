@@ -12,6 +12,7 @@
     <% end %>
 
     <%= form_for @study_set do |f| %>
+      <%= f.hidden_field :owner_id, value: "#{current_user.id}" %>
       <div class="form-group">
         <%= f.label :title %>
         <%= f.text_field :title, class: "form-control" %>

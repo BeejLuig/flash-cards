@@ -1,15 +1,15 @@
 class StudySetsController < ApplicationController
 
   def create
-    @study_set = current_user.study_sets.new(title: study_set_params[:title], description: study_set_params[:description])
-    @study_set.owner = current_user
-    @study_set.users << current_user
-    study_set_params[:flash_cards_attributes].each do |key, flash_card|
-      card = @study_set.flash_cards.new(term: flash_card[:term], definition: flash_card[:definition])
-      card.study_set = @study_set
-      card.save
-    end
-    if @study_set.save
+#    @study_set = current_user.study_sets.new(title: study_set_params[:title], description: study_set_params[:description])
+#    @study_set.owner = current_user
+#    @study_set.users << current_user
+#    study_set_params[:flash_cards_attributes].each do |key, flash_card|
+#      card = @study_set.flash_cards.new(term: flash_card[:term], definition: flash_card[:definition])
+#      card.study_set = @study_set
+#    end
+    @study_set = current_user.study_sets.new(study_set_params)
+    if current_user.save
       redirect_to user_path(current_user)
     else
       render :new
@@ -17,6 +17,12 @@ class StudySetsController < ApplicationController
   end
 
   def update
+    @study_set = StudySet.find_by_id(params[:id])
+    if @study_set.update(study_set_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
   end
 
   def index
@@ -33,6 +39,8 @@ class StudySetsController < ApplicationController
   end
 
   def edit
+    @study_set = StudySet.find_by_id(params[:id])
+    @flash_cards = @study_set.flash_cards
   end
 
   def destroy
@@ -45,6 +53,6 @@ class StudySetsController < ApplicationController
   private
 
   def study_set_params
-    params.require(:study_set).permit(:title, :description, :flash_cards_attributes => [:term, :definition, :_destroy, :id])
+    params.require(:study_set).permit(:title, :description, :owner_id, :flash_cards_attributes => [:term, :definition, :_destroy, :id])
   end
 end
