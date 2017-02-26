@@ -20,6 +20,11 @@ class StudySetsController < ApplicationController
 
   def index
     @study_sets = StudySet.all
+    if params[:search]
+      @study_sets = StudySet.search(params[:search]).order("created_at DESC")
+    else
+      @study_sets = StudySet.all.order("created_at DESC")
+    end
   end
 
   def new

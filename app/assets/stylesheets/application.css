@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 body {
   text-align: center;
   background: #f0f0f0;
@@ -50,7 +51,14 @@ body {
 
 .jumbotron {
   height: 300px;
+  font-family: 'Gloria Hallelujah', cursive;
   background: #fff;
+  background-image: url("/blank_blackboard.jpg");
+  color: #eee;
+}
+
+.jumbotron h1 {
+  font-size: 6em;
 }
 
 .UILinkBox {
