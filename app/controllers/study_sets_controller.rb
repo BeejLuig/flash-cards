@@ -28,7 +28,7 @@ class StudySetsController < ApplicationController
   end
 
   def new
-    @study_set = current_user.study_sets.build
+    @study_set = StudySet.new(owner_id: params[:id])
   end
 
   def show

@@ -20,11 +20,11 @@
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
   <div class="row">
+    <% if @study_sets.blank? %>
+      <p>Sorry, no study sets were found!</p>
+      <p>Try again or go <%= link_to "back",  root_path%></p>
+    <% end %>
     <div class="col-md-4">
-      <% if @study_sets.blank? %>
-        <p>Sorry, no study sets were found!</p>
-        <p>Try again or go <%= link_to "back",  root_path%></p>
-      <% end %>
         <% @study_sets.each_with_index do |set, i| %>
           <% if i % 3 == 0 %>
             <%= render :partial => 'study_sets', locals: { study_set: set } %>
