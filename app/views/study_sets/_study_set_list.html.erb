@@ -1,0 +1,25 @@
+<% if study_sets.blank? %>
+  <p>Sorry, no study sets were found!</p>
+  <p>Try again or go <%= link_to "back",  root_path%></p>
+<% end %>
+<div class="col-md-4">
+    <% study_sets.each_with_index do |set, i| %>
+      <% if i % 3 == 0 %>
+        <%= render :partial => 'study_sets', locals: { study_set: set } %>
+      <% end %>
+    <% end %>
+</div>
+<div class="col-md-4">
+  <% study_sets.each_with_index do |set, i| %>
+    <% if i % 3 == 1 %>
+      <%= render :partial => 'study_sets', locals: { study_set: set } %>
+    <% end %>
+  <% end %>
+</div>
+<div class="col-md-4">
+  <% study_sets.each_with_index do |set, i| %>
+    <% if i % 3 == 2 %>
+      <%= render :partial => 'study_sets', locals: { study_set: set } %>
+    <% end %>
+  <% end %>
+</div>

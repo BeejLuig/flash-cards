@@ -1,0 +1,7 @@
+<h2>Study Sets</h2>
+<% study_sets.each do |study_set| %>
+  <p><%= link_to study_set.title, user_study_set_path(study_set.owner, study_set) %><% if user == current_user %> | <%= link_to "Edit", edit_user_study_set_path(study_set.owner, study_set) %> | <%= link_to "Destroy", user_study_set_path(study_set.owner, study_set), method: "delete" %><% end %></p>
+<% end %>
+<div class="crud-links">
+  <%= link_to "New study set", new_user_study_set_path(current_user) if current_user == user %>
+</div>

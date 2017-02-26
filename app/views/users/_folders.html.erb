@@ -1,0 +1,5 @@
+<h2>Folders</h2>
+<% folders.each do |folder| %>
+  <p><%= link_to folder.name, user_folder_path(folder.user, folder) %><% if user == current_user %> | <%= link_to "Edit", edit_user_folder_path(folder.user, folder) %> | <%= link_to "Destroy", user_folder_path(folder.user, folder), method: "delete" %><% end %></p>
+<% end %>
+<%= link_to "New folder", new_user_folder_path(current_user) if current_user == user %>
