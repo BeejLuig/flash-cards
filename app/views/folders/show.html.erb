@@ -3,10 +3,10 @@
   <h2>Study Sets</h2>
   <% if !@folder.study_sets.blank? %>
     <% @folder.study_sets.each do |set| %>
-      <li><%= link_to set.title, study_set_path(set) %></li>
+      <li><%= link_to set.title, user_study_set_path(set.owner, set) %></li>
     <% end %>
   <% else %>
     <li>You have no study sets in this folder. <%= link_to "Add some", edit_folder_path(@folder)%></li>
   <% end %>
 </ul>
-<p><%= link_to "Edit folder", edit_folder_path(@folder) %></p>
+<p><%= link_to "Edit", edit_user_folder_path(@folder.user, @folder) %> | <%= link_to "Delete", user_folder_path(@folder.user, @folder), method: "delete" %></p>

@@ -12,7 +12,7 @@
       </div>
     <% end %>
 
-    <%= form_for @folder do |f| %>
+    <%= form_for [current_user, @folder] do |f| %>
 
       <div class="form-group">
         <%= f.label "name"%>
