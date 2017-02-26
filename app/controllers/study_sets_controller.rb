@@ -49,13 +49,17 @@ class StudySetsController < ApplicationController
     else
       @flash_cards = @study_set.flash_cards
     end
-    render :show
+    redirect_to study_set_path(@study_set)
   end
 
   def copy
     @study_set = StudySet.find_by_id(params[:id])
     @study_set.make_copy(current_user)
     redirect_to user_path(current_user)
+  end
+
+  def self.search(search_terms)
+    where()
   end
 
   private

@@ -6,6 +6,8 @@
   <h2><%= @study_set.description if @study_set.description %></h2>
   <% if user_signed_in? && @study_set.owner != current_user %>
     <span class="copy-this"><%= link_to "Copy this", "/study_sets/#{@study_set.id}/copy", method: "post" %></span>
+  <% elsif user_signed_in? && @study_set.owner == current_user %>
+    <span class="edit-this"><%= link_to "Edit this", edit_study_set_path(@study_set) %></span>
   <% end %>
 </div>
 
