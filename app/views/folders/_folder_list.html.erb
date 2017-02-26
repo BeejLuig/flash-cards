@@ -1,0 +1,10 @@
+<ul class="study-set-list">
+  <h2>Study Sets</h2>
+  <% if !folder.study_sets.blank? %>
+    <% folder.study_sets.each do |set| %>
+      <li><%= link_to set.title, user_study_set_path(set.owner, set) %></li>
+    <% end %>
+  <% else %>
+    <li>There are no study sets in this folder. <%= link_to "Add some", edit_user_folder_path(folder.user, folder) if folder.user == current_user %></li>
+  <% end %>
+</ul>
