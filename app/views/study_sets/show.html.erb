@@ -65,9 +65,7 @@
 
 <script type="text/javascript">
   $('.flip').click(function(){
-      $(this).find('.card').addClass('flipped').mouseleave(function(){
-          $(this).removeClass('flipped');
-      });
+      $(this).find('.card').toggleClass('flipped')
       return false;
   });
 </script>

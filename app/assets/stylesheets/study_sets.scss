@@ -30,9 +30,9 @@ body {
   position: absolute;
   -webkit-backface-visibility: hidden ;
   z-index: 2;
-    font-size: 3em;
+    padding-top: 20px;
+    font-size: 2em;
     text-align: center;
-    line-height: 200px;
 }
 .flip .card .front {
   position: absolute;
@@ -40,6 +40,7 @@ body {
     background: black;
     color: white;
     cursor: pointer;
+    box-shadow: 2px 2px 30px #aaa;
 }
 .flip .card .back {
   -webkit-transform: rotatex(-180deg);
@@ -47,6 +48,7 @@ body {
     background: white;
     color: black;
     cursor: pointer;
+    box-shadow: 2px 2px 30px #aaa;
 }
 
 //
