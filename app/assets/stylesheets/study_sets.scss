@@ -7,6 +7,14 @@
   margin: 0 auto 20px auto;
 }
 
+.copy-this a, .edit-this a {
+  color: #eee;
+}
+
+.copy-this a:hover, .edit-this a:hover {
+  color: #eee;
+}
+
 .study-sets-container {
   background: #f0f0f0;
   width: 100vw;
@@ -14,7 +22,6 @@
 
 #study-set-title {
   margin-bottom: 0;
-  background: white;
 }
 
 #sort {
