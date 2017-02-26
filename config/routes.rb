@@ -2,8 +2,12 @@ Rails.application.routes.draw do
 
   root to: "study_sets#index"
 
+
   post '/users/:id/study_sets/:id/copy', to: "study_sets#copy"
+  get '/users/:id/study_sets/:id/sort', to: "study_sets#sort"
   post '/users/:id/study_sets/:id/sort', to: "study_sets#sort"
+  post '/users/:id/study_sets/:id/study_mode', to: "study_sets#study_mode"
+  get '/users/:id/study_sets/:id/study_mode', to: "study_sets#study_mode"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 

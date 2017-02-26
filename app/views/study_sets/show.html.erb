@@ -1,7 +1,7 @@
 
 <div class="jumbotron" id="study-set-title">
   <span class="flash-card-count"><%= pluralize(@flash_cards.count, "flash card") %></span>
-  <span class="separator"> | </span><span class="study-set-owner"><%= @study_set.owner.email %></span>
+  <span class="separator"> | </span><span class="flash-card-count"><%= pluralize(@flash_cards.count, "flash card") %></span><span class="separator"> | </span><%= link_to @study_set.owner.email, user_path(@study_set.owner), class: "study-set-owner" %></span>
   <h1><%= @study_set.title %></h1>
   <h2><%= @study_set.description if @study_set.description %></h2>
   <% if user_signed_in? && @study_set.owner != current_user %>
@@ -11,36 +11,63 @@
   <% end %>
 </div>
 
-
-<div class="study-sets-container">
-  <div class="row">
-    <div class="col-md-3">
-      <div class="sort-controls">
-        <%= form_tag "/users/#{@study_set.owner_id}/study_sets/#{@study_set.id}/sort" do %>
-          <div class="form-group">
-            <label for="sort">Sort</label>
-            <%= select_tag "sort", options_for_select(["Original", "Alphabetical"], params[:sort] || "Original"), class: "form-control", :onchange => ("javascript: this.form.submit();") %>
-          </div>
-        <% end %>
-      </div>
-    </div> <!-- col-md-3 -->
-    <div class="col-md-3">
+  <% if @study_mode %>
+    <h2>Study mode</h2>
+    <p><%= link_to "Back", user_study_set_path(@study_set.owner, @study_set)%></p>
+    <% @flash_cards.each do |card| %>
+      <%= render partial: "flash_card_flip", locals: {flash_card: card} %>
+    <% end %>
+    <p><%= link_to "Back", user_study_set_path(@study_set.owner, @study_set)%></p>
+  <% else %>
+  <div class="study-sets-container">
+    <div class="row">
+      <div class="col-md-3">
         <div class="sort-controls">
-          <div class="form-group">
-            <label for="sort">Filter</label>
-            <select class="form-control" id="sort">
-              <option>All</option>
-              <option>Starred (1)</option>
-            </select>
-          </div>
+          <%= form_tag "/users/#{@study_set.owner_id}/study_sets/#{@study_set.id}/sort" do %>
+            <div class="form-group">
+              <label for="sort">Sort</label>
+              <%= select_tag "sort", options_for_select(["Original", "Alphabetical"], @sort), class: "form-control", :onchange => ("javascript: this.form.submit();") %>
+            </div>
+          <% end %>
         </div>
       </div> <!-- col-md-3 -->
-    <div class="col-md-6">
+      <div class="col-md-3">
+          <div class="sort-controls">
+            <div class="form-group">
+              <label for="sort">Filter</label>
+              <select class="form-control" id="sort">
+                <option>All</option>
+                <option>Starred (1)</option>
+              </select>
+            </div>
+          </div>
+        </div> <!-- col-md-3 -->
+      <div class="col-md-6">
+      </div>
+    </div><!-- row -->
+
+    <% @flash_cards.each do |card| %>
+      <%= render partial: 'flash_card', locals: {flash_card: card} %>
+    <% end %>
+
+    <div class="">
+      <h3>Ready to study?</h3>
+      <%= form_tag "/users/#{@study_set.owner_id}/study_sets/#{@study_set.id}/study_mode",method: "post" do %>
+        <%= hidden_field_tag :user_id, current_user.id %>
+        <%= submit_tag "Study mode", class: "btn btn-default"%>
+      <% end %>
     </div>
-  </div><!-- row -->
+  </div><!-- study-sets-container -->
 
-  <% @flash_cards.each do |card| %>
-    <%= render partial: 'flash_card', locals: {flash_card: card} %>
   <% end %>
+<br>
+<br>
 
-</div><!-- study-sets-container -->
+<script type="text/javascript">
+  $('.flip').click(function(){
+      $(this).find('.card').addClass('flipped').mouseleave(function(){
+          $(this).removeClass('flipped');
+      });
+      return false;
+  });
+</script>

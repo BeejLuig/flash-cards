@@ -49,6 +49,7 @@ class StudySetsController < ApplicationController
 
   def sort
     @study_set = StudySet.find_by_id(params[:id])
+    @sort ||= params[:sort]
     if params[:sort] == "Alphabetical"
       @flash_cards = @study_set.flash_cards.sort_by {|fs| fs.term }
     else
@@ -61,6 +62,21 @@ class StudySetsController < ApplicationController
     @study_set = StudySet.find_by_id(params[:id])
     @study_set.make_copy(current_user)
     redirect_to user_path(current_user)
+  end
+
+  def study_mode
+    @study_set = StudySet.find_by_id(params[:id])
+    if !current_user
+      render :show, alert: "You must be signed in to use this feature!"
+    else
+      if !@study_set.studiers.include?(current_user)
+        @study_set.studiers << current_user
+        @study_set.save
+      end
+      @flash_cards = @study_set.flash_cards
+      @study_mode = true
+      render :show
+    end
   end
 
   def self.search(search_terms)
