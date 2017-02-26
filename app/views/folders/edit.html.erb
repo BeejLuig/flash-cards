@@ -1,5 +1,5 @@
 <h1>Edit folder</h1>
 <%= render 'form' %>
 <div class="">
-  <%= button_to "Destroy folder", folder_path(@folder), class: "btn btn-default", method: "delete" %>
+  <%= button_to "Destroy folder", user_folder_path(@folder.user, @folder), class: "btn btn-default", method: "delete" %>
 </div>

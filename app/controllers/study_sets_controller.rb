@@ -54,7 +54,7 @@ class StudySetsController < ApplicationController
     else
       @flash_cards = @study_set.flash_cards
     end
-    redirect_to study_set_path(@study_set)
+    render :show
   end
 
   def copy

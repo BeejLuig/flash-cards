@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   root to: "study_sets#index"
-  
-  post '/study_sets/:id/copy', to: "study_sets#copy"
-  post '/study_sets/:id/sort', to: "study_sets#sort"
+
+  post '/users/:id/study_sets/:id/copy', to: "study_sets#copy"
+  post '/users/:id/study_sets/:id/sort', to: "study_sets#sort"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 

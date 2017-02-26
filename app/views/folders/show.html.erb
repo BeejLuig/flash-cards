@@ -6,7 +6,9 @@
       <li><%= link_to set.title, user_study_set_path(set.owner, set) %></li>
     <% end %>
   <% else %>
-    <li>You have no study sets in this folder. <%= link_to "Add some", edit_folder_path(@folder)%></li>
+    <li>There are no study sets in this folder. <%= link_to "Add some", edit_user_folder_path(@folder.user, @folder) if @folder.user == current_user %></li>
   <% end %>
 </ul>
-<p><%= link_to "Edit", edit_user_folder_path(@folder.user, @folder) %> | <%= link_to "Delete", user_folder_path(@folder.user, @folder), method: "delete" %></p>
+<% if @folder.user == current_user %>
+  <p><%= link_to "Edit", edit_user_folder_path(@folder.user, @folder) %> | <%= link_to "Delete", user_folder_path(@folder.user, @folder), method: "delete" %></p>
+<% end %>
