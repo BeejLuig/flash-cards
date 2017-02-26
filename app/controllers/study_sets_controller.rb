@@ -69,7 +69,7 @@ class StudySetsController < ApplicationController
     if !current_user
       @flash_cards = @study_set.flash_cards
       flash[:alert] = "You must be signed in to use this feature!"
-      render :show
+      redirect_to user_study_set_path(@study_set)
     else
       if !@study_set.studiers.include?(current_user)
         @study_set.studiers << current_user

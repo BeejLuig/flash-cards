@@ -256,12 +256,6 @@ body {
   }
 }
 
-@media screen and (max-width: 769px) {
-  .flash-messages {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .form-control {
     max-width: 400px;
