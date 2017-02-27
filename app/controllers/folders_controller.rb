@@ -31,6 +31,7 @@ class FoldersController < ApplicationController
 
   def show
     @folder = Folder.find_by_id(params[:id])
+    @study_sets = @folder.study_sets
   end
 
   def destroy

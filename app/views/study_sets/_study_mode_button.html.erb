@@ -1,0 +1,7 @@
+<div class="study-mode-button">
+  <h3>Ready to study?</h3>
+  <%= form_tag "/users/#{study_set.owner_id}/study_sets/#{study_set.id}/study_mode",method: "post" do %>
+    <%= hidden_field_tag :user_id, current_user.id if current_user %>
+    <%= submit_tag "Study mode", class: "btn btn-default"%>
+  <% end %>
+</div> <!-- study-mode-button -->

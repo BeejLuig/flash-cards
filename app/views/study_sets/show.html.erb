@@ -1,62 +1,26 @@
-
-<div class="jumbotron" id="study-set-title">
-  <span class="flash-card-count"><%= pluralize(@flash_cards.count, "flash card") %></span>
-  <span class="separator"> | </span><span class="flash-card-count"><%= pluralize(@study_set.studiers.count, "studier") %></span><span class="separator"> | </span><%= link_to @study_set.owner.email, user_path(@study_set.owner), class: "study-set-owner" %></span>
-  <h1><%= @study_set.title %></h1>
-  <h2><%= @study_set.description if @study_set.description %></h2>
-  <% if user_signed_in? && @study_set.owner != current_user %>
-    <span class="copy-this"><%= link_to "Copy this", "/users/#{@study_set.owner_id}/study_sets/#{@study_set.id}/copy", method: "post" %></span>
-  <% elsif user_signed_in? && @study_set.owner == current_user %>
-    <span class="edit-this"><%= link_to "Edit this", edit_user_study_set_path(@study_set.owner, @study_set) %></span>
-  <% end %>
-</div>
+<%= render :partial => "jumbotron", locals: { study_set: @study_set, flash_cards: @flash_cards }%>
 
   <% if @study_mode %>
+
     <h2>Study mode</h2>
     <p><%= link_to "Back", user_study_set_path(@study_set.owner, @study_set)%></p>
     <% @flash_cards.each do |card| %>
       <%= render partial: "flash_card_flip", locals: {flash_card: card} %>
     <% end %>
     <p><%= link_to "Back", user_study_set_path(@study_set.owner, @study_set)%></p>
+
   <% else %>
+
   <div class="study-sets-container">
     <div class="row">
-      <div class="col-md-3">
-        <div class="sort-controls">
-          <%= form_tag "/users/#{@study_set.owner_id}/study_sets/#{@study_set.id}/sort" do %>
-            <div class="form-group">
-              <label for="sort">Sort</label>
-              <%= select_tag "sort", options_for_select(["Original", "Alphabetical"], @sort), class: "form-control", :onchange => ("javascript: this.form.submit();") %>
-            </div>
-          <% end %>
-        </div>
-      </div> <!-- col-md-3 -->
-      <div class="col-md-3">
-          <div class="sort-controls">
-            <div class="form-group">
-              <label for="sort">Filter</label>
-              <select class="form-control" id="sort">
-                <option>All</option>
-                <option>Starred (1)</option>
-              </select>
-            </div>
-          </div>
-        </div> <!-- col-md-3 -->
-      <div class="col-md-6">
-      </div>
+      <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
     </div><!-- row -->
 
     <% @flash_cards.each do |card| %>
       <%= render partial: 'flash_card', locals: {flash_card: card} %>
     <% end %>
 
-    <div class="">
-      <h3>Ready to study?</h3>
-      <%= form_tag "/users/#{@study_set.owner_id}/study_sets/#{@study_set.id}/study_mode",method: "post" do %>
-        <%= hidden_field_tag :user_id, current_user.id if current_user %>
-        <%= submit_tag "Study mode", class: "btn btn-default"%>
-      <% end %>
-    </div>
+    <%= render :partial => "study_mode_button", locals: { study_set: @study_set } %>
   </div><!-- study-sets-container -->
 
   <% end %>

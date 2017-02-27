@@ -1,0 +1,27 @@
+<div class="col-md-3">
+
+  <div class="sort-controls">
+    <%= form_tag "/users/#{study_set.owner_id}/study_sets/#{study_set.id}/sort" do %>
+      <div class="form-group">
+        <label for="sort">Sort</label>
+        <%= select_tag "sort", options_for_select(["Original", "Alphabetical"], sort), class: "form-control", :onchange => ("javascript: this.form.submit();") %>
+      </div> <!-- form-group -->
+    <% end %>
+
+  </div> <!-- sort-controls -->
+</div> <!-- col-md-3 -->
+
+<div class="col-md-3">
+    <div class="sort-controls">
+      <div class="form-group">
+        <label for="sort">Filter</label>
+        <select class="form-control" id="sort">
+          <option>All</option>
+          <option>Starred (1)</option>
+        </select>
+      </div> <!-- form-group -->
+    </div> <!-- sort-controls -->
+  </div> <!-- col-md-3 -->
+
+<div class="col-md-6">
+</div> <!-- col-md-6 -->

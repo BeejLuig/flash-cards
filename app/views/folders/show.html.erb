@@ -1,5 +1,5 @@
 <h1><%= @folder.name %></h1>
-<%= render :partial => "folder_list", locals: {folder: @folder }%>
+<%= render :partial => "folder_list", locals: {folder: @folder, study_sets: @study_sets }%>
 <% if @folder.user == current_user %>
   <p><%= link_to "Edit", edit_user_folder_path(@folder.user, @folder) %> | <%= link_to "Delete", user_folder_path(@folder.user, @folder), method: "delete" %></p>
 <% end %>
