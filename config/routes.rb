@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 
-  resources :users, only: [:show, :edit, :update, :destroy] do
+  resources :users, only: [:show] do
     resources :study_sets, only: [:show, :edit, :update, :destroy, :new, :create]
     resources :folders, only: [:show, :new, :create, :edit, :update, :destroy]
   end

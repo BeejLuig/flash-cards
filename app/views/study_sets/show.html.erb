@@ -11,19 +11,22 @@
 
   <% else %>
 
-  <div class="study-sets-container">
-    <div class="row">
-      <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
-    </div><!-- row -->
+    <div class="study-sets-container">
 
-    <% @flash_cards.each do |card| %>
-      <%= render partial: 'flash_card', locals: {flash_card: card} %>
-    <% end %>
+      <div class="row">
+        <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
+      </div><!-- row -->
 
-    <%= render :partial => "study_mode_button", locals: { study_set: @study_set } %>
-  </div><!-- study-sets-container -->
+      <% @flash_cards.each do |card| %>
+        <%= render partial: 'flash_card', locals: {flash_card: card} %>
+      <% end %>
+
+      <%= render :partial => "study_mode_button", locals: { study_set: @study_set } %>
+      
+    </div><!-- study-sets-container -->
 
   <% end %>
+
 <br>
 <br>
 
