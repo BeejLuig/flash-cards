@@ -1,14 +1,11 @@
 class FoldersController < ApplicationController
   def create
-    folder = current_user.folders.new(name: folder_params[:name])
-    study_set_ids = folder_params[:study_set_ids]
-    study_set_ids.each do |set_id|
-      if !set_id.blank?
-        folder.study_sets << StudySet.find_by_id(set_id)
-      end
+    @folder = current_user.folders.new(folder_params)
+    if @folder.save
+      redirect_to user_path(current_user)
+    else
+      render :new
     end
-    folder.save
-    redirect_to user_path(current_user)
   end
 
   def new
@@ -17,8 +14,7 @@ class FoldersController < ApplicationController
 
   def update
     @folder = Folder.find_by_id(params[:id])
-    study_sets = study_sets = folder_params[:study_set_ids].map { |set_id| StudySet.find_by_id(set_id) }.compact
-    if @folder.update(name: folder_params[:name], study_sets: study_sets)
+    if @folder.update(folder_params)
       redirect_to user_path(current_user)
     else
       render :edit
@@ -39,9 +35,6 @@ class FoldersController < ApplicationController
     @folder.destroy
     flash[:notice] = "#{@folder.name} successfully destroyed"
     redirect_to user_path(current_user)
-  end
-
-  def index
   end
 
   private
