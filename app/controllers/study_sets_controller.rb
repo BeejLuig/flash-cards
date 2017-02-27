@@ -71,18 +71,11 @@ class StudySetsController < ApplicationController
       flash[:alert] = "You must be signed in to use this feature!"
       redirect_to user_study_set_path(@study_set)
     else
-      if !@study_set.studiers.include?(current_user)
-        @study_set.studiers << current_user
-        @study_set.save
-      end
+      @study_set.add_studier(current_user)
       @flash_cards = @study_set.flash_cards
       @study_mode = true
       render :show
     end
-  end
-
-  def self.search(search_terms)
-    where()
   end
 
   private

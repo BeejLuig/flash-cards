@@ -19,6 +19,13 @@ class StudySet < ApplicationRecord
     copy.save
   end
 
+  def add_studier(user)
+    if !self.studiers.include?(user)
+      self.studiers << user
+      self.save
+    end
+  end
+
   def self.search(search)
     where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
   end
