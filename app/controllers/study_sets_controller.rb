@@ -1,20 +1,30 @@
 class StudySetsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:show, :index, :sort]
+
   def create
-    @study_set = current_user.study_sets.new(study_set_params)
-    if current_user.save
-      redirect_to user_path(current_user)
+    if user_verified?
+      @study_set = current_user.study_sets.new(study_set_params)
+      if current_user.save
+        redirect_to user_path(current_user)
+      else
+        render :new
+      end
     else
-      render :new
+      whoops
     end
   end
 
   def update
-    @study_set = StudySet.find_by_id(params[:id])
-    if @study_set.update(study_set_params)
-      redirect_to user_path(current_user)
+    if user_verified?
+      @study_set = StudySet.find_by_id(params[:id])
+      if @study_set.update(study_set_params)
+        redirect_to user_path(current_user)
+      else
+        render :edit
+      end
     else
-      render :edit
+      whoops
     end
   end
 
@@ -28,7 +38,11 @@ class StudySetsController < ApplicationController
   end
 
   def new
-    @study_set = StudySet.new(owner_id: params[:id])
+    if user_verified?
+      @study_set = StudySet.new(owner_id: params[:id])
+    else
+      whoops
+    end
   end
 
   def show
@@ -37,14 +51,22 @@ class StudySetsController < ApplicationController
   end
 
   def edit
-    @study_set = StudySet.find_by_id(params[:id])
-    @flash_cards = @study_set.flash_cards
+    if user_verified?
+      @study_set = StudySet.find_by_id(params[:id])
+      @flash_cards = @study_set.flash_cards
+    else
+      whoops
+    end
   end
 
   def destroy
-    study_set = StudySet.find_by_id(params[:id])
-    study_set.destroy
-    redirect_to user_path(current_user)
+    if user_verified?
+      study_set = StudySet.find_by_id(params[:id])
+      study_set.destroy
+      redirect_to user_path(current_user)
+    else
+      whoops
+    end
   end
 
   def sort

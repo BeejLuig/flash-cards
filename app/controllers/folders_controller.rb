@@ -1,43 +1,71 @@
 class FoldersController < ApplicationController
+
+  before_action :authenticate_user!
+
   def create
-    @folder = current_user.folders.new(folder_params)
-    if @folder.save
-      redirect_to user_path(current_user)
+    if user_verified?
+      @folder = current_user.folders.new(folder_params)
+      if @folder.save
+        redirect_to user_path(current_user)
+      else
+        render :new
+      end
     else
-      render :new
+      whoops
     end
   end
 
   def new
-    @folder = current_user.folders.build
+    if user_verified?
+      @folder = current_user.folders.build
+    else
+      whoops
+    end
   end
 
   def update
-    @folder = Folder.find_by_id(params[:id])
-    if @folder.update(folder_params)
-      redirect_to user_path(current_user)
+    if user_verified?
+      @folder = Folder.find_by_id(params[:id])
+      if @folder.update(folder_params)
+        redirect_to user_path(current_user)
+      else
+        render :edit
+      end
     else
-      render :edit
+      whoops
     end
   end
 
   def edit
-    @folder = Folder.find_by_id(params[:id])
+    if user_verified?
+      @folder = Folder.find_by_id(params[:id])
+    else
+      whoops
+    end
   end
 
   def show
-    @folder = Folder.find_by_id(params[:id])
-    @study_sets = @folder.study_sets
+    if user_verified?
+      @folder = Folder.find_by_id(params[:id])
+      @study_sets = @folder.study_sets
+    else
+      whoops
+    end
   end
 
   def destroy
-    @folder = Folder.find_by_id(params[:id])
-    @folder.destroy
-    flash[:notice] = "#{@folder.name} successfully destroyed"
-    redirect_to user_path(current_user)
+    if user_verified?
+      @folder = Folder.find_by_id(params[:id])
+      @folder.destroy
+      flash[:notice] = "#{@folder.name} successfully destroyed"
+      redirect_to user_path(current_user)
+    else
+      whoops
+    end
   end
 
   private
+
   def folder_params
     params.require(:folder).permit(:name, :study_set_ids => [])
   end
