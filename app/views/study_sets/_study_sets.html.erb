@@ -3,7 +3,7 @@
     <div class="UILinkBox">
       <div class="UILinkBox-inner">
         <div class="PreviewCardByline">
-          <span class="SetPreview-cardBylineTermsCount"><%= study_set.flash_cards.count %> terms</span>
+          <span class="SetPreview-cardBylineTermsCount"><%= pluralize(study_set.flash_cards.count, 'term') %></span>
           <span class="UIVerticalRule UIVerticalRule--onWhite"></span>
           <div class="SetPreview-cardBylineCreator">
             <div class="UserLink">
