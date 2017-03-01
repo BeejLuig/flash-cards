@@ -18,7 +18,7 @@ Specs:
 - [x] Include form display of validation errors (form URL e.g. /recipes/new) *validation errors for all forms*
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
+- [x] The application is pretty DRY - *repeated view elements moved to partials, repeated logic moved to helper methods*
+- [x] Limited logic in controllers - *extra logic moved to models of `StudySet` and `User`*
+- [x] Views use helper methods if appropriate - *no helpers necessary in the views...yet*
 - [x] Views use partials if appropriate *partials in `folders`, `layouts`, and `study_sets`*
