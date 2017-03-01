@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 @user = User.create(email: "test@test.com", password: "password")
 
-5.times do |i|
+6.times do |i|
   @user.study_sets.create(title: "Study Set #{i+1}", description: "Description #{i+1}", owner: @user)
 end
 
 StudySet.all.each do |set|
-  5.times do |i|
+  6.times do |i|
     set.flash_cards.create(term: "Term #{i+1}", definition: "Definition #{i+1}")
   end
 end

@@ -5,7 +5,13 @@
       <p>Created <%= pluralize(@user.flash_cards.count, "flash card") %></p>
     </div>
     <div class="col-md-4 col-md-offset-2">
+      <h2>Study Sets</h2>
       <%= render :partial => "study_sets", locals: {user: @user, study_sets: @study_sets} %>
+      <div class="crud-links">
+        <%= link_to "New study set", new_user_study_set_path(current_user) if current_user == @user %>
+      </div>
+      <h2>Recently Studied</h2>
+      <%= render :partial => "study_sets", locals: {user: @user, study_sets: @studied } %>
     </div>
     <div class="col-md-4">
       <%= render :partial => "folders", locals: {folders: @folders, user: @user} %>
