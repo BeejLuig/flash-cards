@@ -5,7 +5,9 @@ class StudySetsController < ApplicationController
   def create
     if user_verified?
       @study_set = current_user.study_sets.new(study_set_params)
-      if current_user.save
+      if @study_set.save
+        current_user.study_sets << @study_set
+        current_user.save
         redirect_to user_path(current_user)
       else
         render :new

@@ -6,7 +6,17 @@ class StudySet < ApplicationRecord
 
   validates :title, presence: true
 
-  accepts_nested_attributes_for :flash_cards, allow_destroy: true
+  # accepts_nested_attributes_for :flash_cards, allow_destroy: true
+
+  def flash_cards_attributes=(attributes)
+    self.flash_cards.destroy_all
+    attributes.each do |i, hash|
+      unless hash["_destroy"] == "1"
+        flash_card = self.flash_cards.new(term: hash[:term], definition: hash[:definition])
+        self.save
+      end
+    end
+  end
 
   def make_copy(user)
     copy = self.dup
