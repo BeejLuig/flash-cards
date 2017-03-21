@@ -3,7 +3,6 @@ class User < ApplicationRecord
   has_and_belongs_to_many :study_sets
   has_many :flash_cards, through: :study_sets, source: :flash_cards
 
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

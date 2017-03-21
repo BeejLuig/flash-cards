@@ -1,3 +1,4 @@
 class FolderSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name
+  has_many :study_sets
 end
