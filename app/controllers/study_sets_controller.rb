@@ -50,6 +50,10 @@ class StudySetsController < ApplicationController
   def show
     @study_set = StudySet.find_by_id(params[:id])
     @flash_cards = @study_set.flash_cards
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @study_set }
+    end
   end
 
   def edit
