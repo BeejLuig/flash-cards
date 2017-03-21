@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :study_sets, only: [:show, :edit, :update, :destroy, :new, :create]
-    resources :folders, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :folders
   end
   resources :study_sets, only: [:index]
   resources :flash_cards, only: [:show]

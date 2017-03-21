@@ -57,6 +57,15 @@ class FoldersController < ApplicationController
     end
   end
 
+  def index
+    if user_verified?
+      @folders = current_user.folders
+      render json: @folders
+    else
+      whoops
+    end
+  end
+
   def destroy
     if user_verified?
       @folder = Folder.find_by_id(params[:id])
