@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require_tree .
 //= require nested_form_fields
+//= require handlebars-v4.0.5

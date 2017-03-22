@@ -7,20 +7,6 @@ class StudySet {
   }
 }
 
-var searchStudySets = function() {
-  $.get("/study_sets.json").done(function(data) {
-    console.log(data);
-    return data;
-  })
-}
-
-var searchStudySetHandler = function() {
-  $("#search-form").submit(function(event) {
-    var data = searchStudySets();
-    event.preventDefault();
-  });
-}
-
 var attachListeners = function(){
   searchStudySetHandler();
 }
