@@ -50,7 +50,7 @@ body {
 }
 
 .jumbotron {
-  height: 300px;
+  min-height: 300px;
   font-family: 'Gloria Hallelujah', cursive;
   background: #fff;
   background-image: url("/blank_blackboard.jpg");
