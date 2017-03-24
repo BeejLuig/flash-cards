@@ -21,16 +21,35 @@ function transformStudySets(studySets) {
   return sets;
 }
 
+var getSearch = function() {
+  var value = $("#search").val();
+  $.get("/study_sets.json?search=" + value, function(sets) {
+    if(sets.length === 0) {
+      $(".col-md-4:not(:last)").html("");
+      $("#searchResults").html('<p>Sorry, no study sets were found!</p><p>Try again or go <a href="/">back</a></p>');
+    } else {
+      var str = { studySets: transformStudySets(sets)};
+      var source = $("#studySet-template").html();
+      var template = Handlebars.compile(source);
+      $(".col-md-4:not(:last)").html("");
+      $("#searchResults").html(template(str));
+      $("#searchResults").append("<p><a href='/'>Back</a></p>")
+    }
+  });
+}
+
 var attachListeners = function(){
+  $("[type=submit]").click(function(event){
+    console.log("BUTTON PRESSED")
+    event.preventDefault();
+    getSearch();
+  });
 }
 
 $(function(){
-  attachListeners()
-  $.get("/study_sets.json", function(sets) {
-    var data = { studySets: transformStudySets(sets)}
-    console.log(data);
-    var source = $("#studySet-template").html();
-    var template = Handlebars.compile(source);
-    $("#searchResults").html(template(data))
+  Handlebars.registerHelper('flashCardCount', function() {
+    return this.flashCardCount();
   });
+
+  attachListeners();
 })
