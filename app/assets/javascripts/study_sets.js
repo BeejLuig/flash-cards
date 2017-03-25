@@ -38,12 +38,19 @@ var getSearch = function() {
   });
 }
 
-var attachListeners = function(){
-  $("[type=submit]").click(function(event){
-    console.log("BUTTON PRESSED")
+var searchListener = function() {
+  $("[value=Search]").click(function(event){
     event.preventDefault();
     getSearch();
   });
+}
+
+var studyModeListener = function() {
+  //TODO
+}
+
+var attachListeners = function(){
+  searchListener();
 }
 
 $(function(){

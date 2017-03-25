@@ -2,12 +2,12 @@
 
 Specs:
 - [x] Use jQuery for implementing new requirements
-- [ ] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend. *folder show page*
-- [ ] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. *study set filters*
-- [ ] Include at least one has_many relationship in information rendered via JSON and appended to the DOM. *folder show page*
-- [ ] Include at least one link that loads or updates a resource without reloading the page. *study set filter*
-- [ ] Translate JSON responses into js model objects. *study set, flash cards, folders*
-- [ ] At least one of the js model objects must have at least one method added by your code to the prototype. *starring flash cards*
+- [ ] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend. *study set show page*
+- [x] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. *study set filters*
+- [x] Include at least one has_many relationship in information rendered via JSON and appended to the DOM. *study set show page*
+- [x] Include at least one link that loads or updates a resource without reloading the page. *study set filter, study mode*
+- [ ] Translate JSON responses into js model objects. *study set, flash cards*
+- [ ] At least one of the js model objects must have at least one method added by your code to the prototype. *StudySet flashCardCount*
 
 Confirm
 - [ ] You have a large number of small Git commits

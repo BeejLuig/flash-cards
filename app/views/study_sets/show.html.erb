@@ -21,8 +21,8 @@
         <%= render partial: 'flash_card', locals: {flash_card: card} %>
       <% end %>
 
-      <%= render :partial => "study_mode_button", locals: { study_set: @study_set } %>
-      
+      <h3>Ready to study?</h3>
+      <button type="button" class="btn btn-default" name="button">Study mode</button>
     </div><!-- study-sets-container -->
 
   <% end %>
