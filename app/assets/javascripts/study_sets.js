@@ -48,7 +48,12 @@ var searchListener = function() {
 var studyModeListener = function() {
   $("#studyMode").click(function(event){
     console.log("button pressed");
-    debugger
+    var ownerId = $(this).data("ownerId");
+    var id = $(this).data("id");
+    var url = "/users/" + ownerId + "/study_sets/" + id + "/study_mode";
+    $.get(url, function(data){
+      console.log(data);
+    });
   });
 }
 
