@@ -97,8 +97,15 @@ class StudySetsController < ApplicationController
 
   def study_mode
     @study_set = StudySet.find_by_id(params[:id])
-    @study_set.add_studier(current_user)
-    render json: @study_set
+    if !current_user
+      @flash_cards = @study_set.flash_cards
+      flash[:alert] = "You must be signed in to use this feature!"
+      redirect_to user_study_set_path(@study_set)
+    else
+      @study_set.add_studier(current_user)
+      @study_set.add_studier(current_user)
+      render json: @study_set
+    end
   end
 
   private

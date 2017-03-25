@@ -1,3 +1,15 @@
+$(function(){
+  initPage();
+});
+
+function initPage() {
+  Handlebars.registerHelper('flashCardCount', function() {
+    return this.flashCardCount();
+  });
+
+  attachListeners();
+}
+
 class StudySet {
   constructor(id, title, description, owner, flashCards = []){
     this.id = id
@@ -22,7 +34,7 @@ function transformStudySets(studySets) {
   return sets;
 }
 
-var getSearch = function() {
+function getSearch() {
   var value = $("#search").val();
   $.get("/study_sets.json?search=" + value, function(sets) {
     if(sets.length === 0) {
@@ -39,15 +51,15 @@ var getSearch = function() {
   });
 }
 
-var searchListener = function() {
-  $("[value=Search]").click(function(event){
+function searchListener() {
+  $(document).on("click", "#searchButton", function(event){
     event.preventDefault();
     getSearch();
   });
 }
 
-var studyModeListener = function() {
-  $("#studyMode").click(function(event){
+function studyModeListener() {
+  $(document).on("click", "#studyMode", function(event){
     console.log("button pressed");
     var ownerId = $(this).data("ownerId");
     var id = $(this).data("id");
@@ -62,23 +74,15 @@ var studyModeListener = function() {
   });
 }
 
-var cardFlipListener = function() {
-  $('.flip').click(function(){
+function cardFlipListener() {
+  $('.flip').on("click", function(){
       $(this).find('.card').toggleClass('flipped')
       return false;
   });
 }
 
-var attachListeners = function(){
+function attachListeners(){
   searchListener();
   studyModeListener();
   cardFlipListener();
 }
-
-$(function(){
-  Handlebars.registerHelper('flashCardCount', function() {
-    return this.flashCardCount();
-  });
-
-  attachListeners();
-})
