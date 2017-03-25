@@ -17,6 +17,7 @@
 body {
   text-align: center;
   background: #f0f0f0;
+  overflow-x: hidden;
 }
 
 .h1, h1 {
