@@ -47,8 +47,9 @@ var searchListener = function() {
 
 var studyModeListener = function() {
   $("#studyMode").click(function(event){
-    console.log("button pressed")
-  })
+    console.log("button pressed");
+    debugger
+  });
 }
 
 var cardFlipListener = function() {

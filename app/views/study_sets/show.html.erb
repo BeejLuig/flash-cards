@@ -12,7 +12,7 @@
       <% end %>
 
       <h3>Ready to study?</h3>
-      <button id="studyMode" class="btn btn-default" name="button">Study mode</button>
+      <button id="studyMode" data-id="<%= @study_set.id %>" data-owner-id="<%= @study_set.owner.id %>" class="btn btn-default" name="button">Study mode</button>
     </div>
   </div><!-- study-sets-container -->
 
