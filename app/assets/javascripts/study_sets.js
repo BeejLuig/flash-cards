@@ -1,5 +1,6 @@
 class StudySet {
-  constructor(title, description, owner, flashCards = []){
+  constructor(id, title, description, owner, flashCards = []){
+    this.id = id
     this.title = title;
     this.description = description;
     this.ownerId = owner["id"];
@@ -16,7 +17,7 @@ class StudySet {
 function transformStudySets(studySets) {
   sets = [];
   studySets.forEach(function(set){
-    sets.push(new StudySet(set["title"], set["description"], set["owner"], set["flash_cards"]))
+    sets.push(new StudySet(set["id"], set["title"], set["description"], set["owner"], set["flash_cards"]))
   });
   return sets;
 }
@@ -52,7 +53,11 @@ var studyModeListener = function() {
     var id = $(this).data("id");
     var url = "/users/" + ownerId + "/study_sets/" + id + "/study_mode";
     $.get(url, function(data){
-      console.log(data);
+      studySet = new StudySet(data["id"], data["title"], data["description"], data["owner"], data["flash_cards"]);
+      console.log(studySet);
+      var source = $("#studyMode-template").html();
+      var template = Handlebars.compile(source);
+      $("#study-sets").html(template(studySet));
     });
   });
 }
