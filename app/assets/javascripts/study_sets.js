@@ -6,7 +6,6 @@ function initPage() {
   Handlebars.registerHelper('flashCardCount', function() {
     return this.flashCardCount();
   });
-
   attachListeners();
 }
 
@@ -24,6 +23,20 @@ class StudySet {
   flashCardCount() {
     return this.flashCards.length
   }
+}
+
+function addFlashCardListener(){
+  $(document).on("click", "#addFlashCardButton", function() {
+    var $addFlashCard = $("#addFlashCard");
+    var url = window.location.pathname.split("/");
+    var id = url[4];
+    var ownerId = url[2];
+    var obj = { id: id, ownerId: ownerId };
+    var source = $("#addFlashCard-template").html();
+    var template = Handlebars.compile(source);
+
+    $addFlashCard.html(template(obj));
+  });
 }
 
 function transformStudySets(studySets) {
@@ -85,4 +98,5 @@ function attachListeners(){
   searchListener();
   studyModeListener();
   cardFlipListener();
+  addFlashCardListener();
 }

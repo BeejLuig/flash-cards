@@ -4,28 +4,10 @@
 
     <div class="row" id="study-sets">
       <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
-      <button type="button" class="btn btn-default" id="addFlashCard">Add flash card</button>
+      <button type="button" class="btn btn-default" id="addFlashCardButton">Add flash card</button>
       <br>
       <br>
-      <div id="addFlashCard" class="hidden">
-        <form class="edit_study_set" id="edit_study_set_13" action="/users/4/study_sets/13" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="aVbt6mf9hJAbrphz5E6s/zdHQY/IQ3l57OdLnr7AyqDK9it8nxkHL3+uz7JDqlRMAsPsnXh8IZjSlx33TGUevQ==">
-          <input value="4" type="hidden" name="study_set[owner_id]" id="study_set_owner_id">
-          <div class="form-group">
-            <fieldset class="nested_fields nested_study_set_flash_cards">
-              <label for="study_set_flash_cards_attributes_0_term">Term</label>
-              <input class="form-control" type="text" value="" name="study_set[flash_cards_attributes][0][term]" id="study_set_flash_cards_attributes_0_term">
-              <label for="study_set_flash_cards_attributes_0_definition">Definition</label>
-              <input class="form-control" type="text" value="" name="study_set[flash_cards_attributes][0][definition]" id="study_set_flash_cards_attributes_0_definition">
-              <a class=" remove_nested_fields_link" data-delete-association-field-name="study_set[flash_cards_attributes][0][_destroy]" data-object-class="flash_card" href="">remove</a>
-              <br>
-              <br>
-            </fieldset>
-          </div>
-          <div class="form-group">
-            <input type="submit" name="commit" value="Submit" class="btn btn-default" data-disable-with="Submit">
-          </div>
-        </form>
-      </div>
+      <div id="addFlashCard"></div>
       </div>
       <% @flash_cards.each do |card| %>
         <%= render partial: 'flash_card', locals: {flash_card: card} %>
@@ -50,4 +32,25 @@
     </div>
   {{/each}}
   <p><a href="/users/{{ownerId}}/study_sets/{{id}}">Back</a></p>
+</script>
+
+<script id="addFlashCard-template" type="text/x-handlebars-template">
+  <form class="edit_study_set" id="edit_study_set_{{id}}" action="/users/{{ownerId}}/study_sets/{{id}}" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="authenticity_token" value="aVbt6mf9hJAbrphz5E6s/zdHQY/IQ3l57OdLnr7AyqDK9it8nxkHL3+uz7JDqlRMAsPsnXh8IZjSlx33TGUevQ==">
+    <input value="{{owner_id}}" type="hidden" name="study_set[owner_id]" id="study_set_owner_id">
+
+    <div class="form-group">
+      <fieldset class="nested_fields nested_study_set_flash_cards">
+        <label for="study_set_flash_cards_attributes_0_term">Term</label>
+        <input class="form-control" type="text" value="" name="study_set[flash_cards_attributes][0][term]" id="study_set_flash_cards_attributes_0_term">
+        <label for="study_set_flash_cards_attributes_0_definition">Definition</label>
+        <input class="form-control" type="text" value="" name="study_set[flash_cards_attributes][0][definition]" id="study_set_flash_cards_attributes_0_definition">
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <input type="submit" name="commit" value="Submit" class="btn btn-default" data-disable-with="Submit">
+    </div>
+  </form>
 </script>
