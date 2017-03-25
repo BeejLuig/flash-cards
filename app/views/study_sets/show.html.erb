@@ -1,34 +1,29 @@
 <%= render :partial => "jumbotron", locals: { study_set: @study_set, flash_cards: @flash_cards }%>
 
-  <% if @study_mode %>
+  <div class="study-sets-container">
 
-    <h2>Study mode</h2>
-    <p><%= link_to "Back", user_study_set_path(@study_set.owner, @study_set)%></p>
-    <% @flash_cards.each do |card| %>
-      <%= render partial: "flash_card_flip", locals: {flash_card: card} %>
-    <% end %>
-    <p><%= link_to "Back", user_study_set_path(@study_set.owner, @study_set)%></p>
+    <div class="row">
+      <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
+    </div><!-- row -->
 
-  <% else %>
-
-    <div class="study-sets-container">
-
-      <div class="row">
-        <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
-      </div><!-- row -->
-
+    <div class="row" id="study-sets">
       <% @flash_cards.each do |card| %>
         <%= render partial: 'flash_card', locals: {flash_card: card} %>
       <% end %>
 
       <h3>Ready to study?</h3>
       <button id="studyMode" class="btn btn-default" name="button">Study mode</button>
-    </div><!-- study-sets-container -->
-
-  <% end %>
+    </div>
+  </div><!-- study-sets-container -->
 
 <br>
 <br>
+
+<script id="studyMode-template" type="text/x-handlebars-template">
+  <h2>Study mode</h2>
+  <p><a href="/users/{{owner_id}}/study_sets/{{id}}">Back</a></p>
+  <p><a href="/users/{{owner_id}}/study_sets/{{id}}">Back</a></p>
+</script>
 
 <script type="text/javascript">
   $('.flip').click(function(){

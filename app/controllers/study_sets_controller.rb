@@ -98,8 +98,7 @@ class StudySetsController < ApplicationController
   def study_mode
     @study_set = StudySet.find_by_id(params[:id])
     @study_set.add_studier(current_user)
-    @flash_cards = @study_set.flash_cards
-    render json: @flash_cards
+    render json: @study_set
   end
 
   private
