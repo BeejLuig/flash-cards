@@ -46,11 +46,14 @@ var searchListener = function() {
 }
 
 var studyModeListener = function() {
-  //TODO
+  $("#studyMode").click(function(event){
+    console.log("button pressed")
+  })
 }
 
 var attachListeners = function(){
   searchListener();
+  studyModeListener();
 }
 
 $(function(){
