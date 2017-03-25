@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20170225165246) do
     t.integer "study_set_id"
     t.string  "term"
     t.string  "definition"
-    t.boolean "is_starred",   default: false
   end
 
   create_table "folders", force: :cascade do |t|
