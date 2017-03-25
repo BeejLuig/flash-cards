@@ -51,9 +51,17 @@ var studyModeListener = function() {
   })
 }
 
+var cardFlipListener = function() {
+  $('.flip').click(function(){
+      $(this).find('.card').toggleClass('flipped')
+      return false;
+  });
+}
+
 var attachListeners = function(){
   searchListener();
   studyModeListener();
+  cardFlipListener();
 }
 
 $(function(){
