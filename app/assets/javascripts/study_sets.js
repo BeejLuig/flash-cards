@@ -75,7 +75,7 @@ function studyModeListener() {
 }
 
 function cardFlipListener() {
-  $('.flip').on("click", function(){
+  $(document).on("click", ".flip", function(){
       $(this).find('.card').toggleClass('flipped')
       return false;
   });

@@ -2,18 +2,15 @@
 
   <div class="study-sets-container">
 
-    <div class="row">
-      <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
-    </div><!-- row -->
-
     <div class="row" id="study-sets">
+      <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
       <% @flash_cards.each do |card| %>
         <%= render partial: 'flash_card', locals: {flash_card: card} %>
       <% end %>
 
       <h3>Ready to study?</h3>
       <button id="studyMode" data-id="<%= @study_set.id %>" data-owner-id="<%= @study_set.owner.id %>" class="btn btn-default" name="button">Study mode</button>
-    </div>
+    </div> <!-- row -->
   </div><!-- study-sets-container -->
 
 <br>
@@ -21,6 +18,13 @@
 
 <script id="studyMode-template" type="text/x-handlebars-template">
   <h2>Study mode</h2>
-  <p><a href="/users/{{ownerId}}/study_sets/{{id}}">Back</a></p>
+  {{#each flashCards}}
+    <div class="flip">
+      <div class="card">
+        <div class="face front">{{term}}</div>
+        <div class="face back">{{definition}}</div>
+      </div>
+    </div>
+  {{/each}}
   <p><a href="/users/{{ownerId}}/study_sets/{{id}}">Back</a></p>
 </script>
