@@ -4,14 +4,16 @@
 
     <div class="row" id="study-sets">
       <%= render :partial => "sort_controls", locals: { study_set: @study_set, sort: @sort }%>
-      <button id="addFlashCardButton" class="btn btn-default">Add flash card</button>
+      <% if user_signed_in? && user_verified? %>
+        <button id="addFlashCardButton" class="btn btn-default">Add flash card</button>
+      <% end %>
       <br>
       <br>
       <div id="addFlashCard" class="hidden">
         <h3>New flash card</h3>
         <%= form_for @flash_card do |f| %>
           <%= hidden_field_tag :study_set_id, @study_set.id %>
-          <%= hidden_field_tag :user_id, current_user.id %>
+          <%= hidden_field_tag :user_id, @study_set.owner.id %>
           <div class="form-group">
             <%= f.label :term %>
             <%= f.text_field :term, class: "form-control" %>
