@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 $(function(){
   initPage();
@@ -10,7 +10,7 @@ function initPage() {
   });
 
   attachListeners();
-}
+};
 
 class StudySet {
   constructor(id, title, description, owner, flashCards = []){
@@ -21,18 +21,18 @@ class StudySet {
     this.ownerImage = owner["image"]
     this.ownerEmail = owner["email"];
     this.flashCards = flashCards;
-  }
+  };
 
   flashCardCount() {
     return this.flashCards.length
   }
-}
+};
 
 function addFlashCardListener(){
   $(document).on("click", "#addFlashCardButton", function() {
     $("#addFlashCard").toggleClass("hidden");
   });
-}
+};
 
 function transformStudySets(studySets) {
   var sets = [];
@@ -40,7 +40,7 @@ function transformStudySets(studySets) {
     sets.push(new StudySet(set["id"], set["title"], set["description"], set["owner"], set["flash_cards"]))
   });
   return sets;
-}
+};
 
 function getSearch() {
   var value = $("#search").val();
@@ -58,11 +58,11 @@ function getSearch() {
       $("#searchResults").append("<p><a href='/'>Back</a></p>")
     }
   });
-}
+};
 
 function searchListener() {
   $(document).on("click", ".study_sets.index #searchButton", getSearch);
-}
+};
 
 function studyModeListener() {
   $(document).on("click", ".study_sets.show #studyMode", function(event){
@@ -79,14 +79,14 @@ function studyModeListener() {
       $("#study-sets").html(template(studySet));
     });
   });
-}
+};
 
 function cardFlipListener() {
   $(document).on("click", ".study_sets.show .flip", function(){
       $(this).find(".card").toggleClass("flipped");
       return false;
   });
-}
+};
 
 function submitNewFlashCardListener() {
   $(document).on("submit", ".study_sets.show form", function(event){
@@ -109,7 +109,7 @@ function submitNewFlashCardListener() {
     $input.prop("disabled", false);
 
   });
-}
+};
 
 function attachListeners(){
   searchListener();
@@ -117,4 +117,4 @@ function attachListeners(){
   cardFlipListener();
   addFlashCardListener();
   submitNewFlashCardListener();
-}
+};
