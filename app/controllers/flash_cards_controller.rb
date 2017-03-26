@@ -15,7 +15,7 @@ class FlashCardsController < ApplicationController
         @flash_card = @study_set.flash_cards.last
         render json: @flash_card
       else
-        render json: { error: "There was an error saving the new flash card"}
+        render json: { error: "There was an error saving the new flash card" }
       end
     else
       whoops
