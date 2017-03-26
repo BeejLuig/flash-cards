@@ -4,7 +4,6 @@ class CreateFlashCards < ActiveRecord::Migration[5.0]
       t.integer :study_set_id
       t.string :term
       t.string :definition
-      t.boolean :is_starred
     end
   end
 end

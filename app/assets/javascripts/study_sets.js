@@ -1,3 +1,5 @@
+"use strict"
+
 $(function(){
   initPage();
 });
@@ -6,6 +8,7 @@ function initPage() {
   Handlebars.registerHelper('flashCardCount', function() {
     return this.flashCardCount();
   });
+
   attachListeners();
 }
 
@@ -32,7 +35,7 @@ function addFlashCardListener(){
 }
 
 function transformStudySets(studySets) {
-  sets = [];
+  var sets = [];
   studySets.forEach(function(set){
     sets.push(new StudySet(set["id"], set["title"], set["description"], set["owner"], set["flash_cards"]))
   });
@@ -41,6 +44,7 @@ function transformStudySets(studySets) {
 
 function getSearch() {
   var value = $("#search").val();
+
   $.get("/study_sets.json?search=" + value, function(sets) {
     if(sets.length === 0) {
       $(".col-md-4:not(:last)").html("");
@@ -57,41 +61,46 @@ function getSearch() {
 }
 
 function searchListener() {
-  $(document).on("click", "#searchButton", function(event){
-    event.preventDefault();
-    getSearch();
-  });
+  $(document).on("click", ".study_sets.index #searchButton", getSearch);
 }
 
 function studyModeListener() {
-  $(document).on("click", "#studyMode", function(event){
-    console.log("button pressed");
+  $(document).on("click", ".study_sets.show #studyMode", function(event){
+
     var ownerId = $(this).data("ownerId");
     var id = $(this).data("id");
     var url = "/users/" + ownerId + "/study_sets/" + id + "/study_mode";
+
     $.get(url, function(data){
-      studySet = new StudySet(data["id"], data["title"], data["description"], data["owner"], data["flash_cards"]);
-      console.log(studySet);
+      var studySet = new StudySet(data["id"], data["title"], data["description"], data["owner"], data["flash_cards"]);
       var source = $("#studyMode-template").html();
       var template = Handlebars.compile(source);
+
       $("#study-sets").html(template(studySet));
     });
   });
 }
 
 function cardFlipListener() {
-  $(document).on("click", ".flip", function(){
+  $(document).on("click", ".study_sets.show .flip", function(){
       $(this).find('.card').toggleClass('flipped')
       return false;
   });
 }
 
 function submitNewFlashCardListener() {
-  var $form = $("form", "#addFlashCard");
-  var $input = $("[type=submit]");
-  $(document).on("submit", $form, function(event){
+  $(document).on("submit", ".study_sets.show form", function(event){
     event.preventDefault();
-    console.log($input);
+    var $form = $(".study_sets.show form");
+    var values = $form.serialize();
+    var $input = $(".study_sets.show input[type=submit]");
+    console.log($form, values, $input);
+    var posting = $.post('/flash_cards', values);
+    //
+    // posting.done(function(data) {
+    //   // TODO: handle response
+    // });
+    // console.log(values);
     $input.prop("disabled", false);
   });
 }

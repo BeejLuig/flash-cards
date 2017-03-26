@@ -3,4 +3,8 @@ class FlashCardsController < ApplicationController
     @flash_card = FlashCard.find(params[:id])
     render json: @flash_card
   end
+
+  def create
+
+  end
 end

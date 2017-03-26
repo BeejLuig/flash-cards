@@ -59,8 +59,7 @@ belongs_to :study_set
 
 attr_accessor
 :term,
-:definition,
-:is_starred
+:definition
 
 **Folder**
 

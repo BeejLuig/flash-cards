@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :folders
   end
   resources :study_sets, only: [:index]
-  resources :flash_cards, only: [:show]
+  resources :flash_cards, only: [:show, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 #  devise_scope :user do

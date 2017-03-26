@@ -3,7 +3,7 @@
   <head>
     <%= render 'layouts/head' %>
   </head>
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <%= render 'layouts/header' %>
     <%= render 'layouts/flash_messages'%>
     <%= yield %>

@@ -9,16 +9,13 @@
       <br>
       <div id="addFlashCard" class="hidden">
         <h3>New flash card</h3>
-        <%= form_for [current_user, @study_set] do |f| %>
+        <%= form_for @flash_card do |f| %>
           <div class="form-group">
-            <%= f.fields_for @study_set.flash_cards.build do |ff| %>
-              <%= ff.label :term %>
-              <%= ff.text_field :term, class: "form-control" %>
+            <%= f.label :term %>
+            <%= f.text_field :term, class: "form-control" %>
 
-              <%= ff.label :definition %>
-              <%= ff.text_field :definition, class: "form-control" %>
-              <br>
-            <% end %>
+            <%= f.label :definition %>
+            <%= f.text_field :definition, class: "form-control" %>
             <input type="submit" name="commit" value="Submit" class="btn btn-default">
           </div>
         <% end %>
