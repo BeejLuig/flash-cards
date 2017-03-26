@@ -23,9 +23,11 @@
           </div>
         <% end %>
       </div>
-      <% @flash_cards.each do |card| %>
-        <%= render partial: 'flash_card', locals: {flash_card: card} %>
-      <% end %>
+      <div class="flash-cards">
+        <% @flash_cards.each do |card| %>
+          <%= render partial: 'flash_card', locals: {flash_card: card} %>
+        <% end %>
+      </div>
 
       <h3>Ready to study?</h3>
       <button id="studyMode" data-id="<%= @study_set.id %>" data-owner-id="<%= @study_set.owner.id %>" class="btn btn-default" name="button">Study mode</button>
@@ -46,4 +48,24 @@
     </div>
   {{/each}}
   <p><a href="/users/{{ownerId}}/study_sets/{{id}}">Back</a></p>
+</script>
+
+<script id="flashCard-template" type="text/x-handlebars-template">
+  <div class="row flash-card-row">
+    <div class="container flash-card">
+
+      <div class="col-md-6">
+        <div class="term-text">
+          <h3>{{term}}</h3>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="definition-text">
+          <h3>{{definition}}</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </script>

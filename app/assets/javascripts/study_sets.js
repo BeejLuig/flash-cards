@@ -94,13 +94,14 @@ function submitNewFlashCardListener() {
     var $form = $(".study_sets.show form");
     var values = $form.serialize();
     var $input = $(".study_sets.show input[type=submit]");
-    console.log($form, values, $input);
     var posting = $.post('/flash_cards', values);
-    //
-    // posting.done(function(data) {
-    //   // TODO: handle response
-    // });
-    // console.log(values);
+
+    posting.done(function(data) {
+      var source = $("#flashCard-template");
+      var template = Handlebars.compile(source);
+
+      //TODO
+    });
     $input.prop("disabled", false);
   });
 }
