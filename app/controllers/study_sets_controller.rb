@@ -101,7 +101,6 @@ class StudySetsController < ApplicationController
   def study_mode
     @study_set = StudySet.find_by_id(params[:id])
     @study_set.add_studier(current_user)
-    @study_set.add_studier(current_user)
     render json: @study_set
   end
 
