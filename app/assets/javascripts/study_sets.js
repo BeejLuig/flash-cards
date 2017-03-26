@@ -65,19 +65,27 @@ function searchListener() {
 };
 
 function studyModeListener() {
-  $(document).on("click", ".study_sets.show #studyMode", function(event){
+  $(document).on("click", ".study_sets.show #studyMode", studyMode)
+};
 
+function sortedStudyModeListener() {
+  $(document).on("click", ".study_sets.sort #studyMode", studyMode)
+};
+
+function studyMode(event) {
     var ownerId = $(this).data("ownerId");
     var id = $(this).data("id");
     var url = "/users/" + ownerId + "/study_sets/" + id + "/study_mode";
 
-    $.get(url, function(data){
+    var jqxhr = $.get(url, function(data){
       var studySet = new StudySet(data["id"], data["title"], data["description"], data["owner"], data["flash_cards"]);
       var source = $("#studyMode-template").html();
       var template = Handlebars.compile(source);
 
       $("#study-sets").html(template(studySet));
-    });
+  }).fail(function(){
+    var alert = "<div class='flash-messages'><p class='alert'>You must be signed in to use this feature!</p></div>";
+    $(alert).insertBefore(".jumbotron");
   });
 };
 
@@ -89,7 +97,7 @@ function cardFlipListener() {
 };
 
 function submitNewFlashCardListener() {
-  $(document).on("submit", ".study_sets.show form", function(event){
+  $(document).on("submit", ".study_sets.show .new_flash_card", function(event){
     event.preventDefault();
     var $form = $(".study_sets.show form");
     var values = $form.serialize();
@@ -117,4 +125,5 @@ function attachListeners(){
   cardFlipListener();
   addFlashCardListener();
   submitNewFlashCardListener();
+  sortedStudyModeListener();
 };
