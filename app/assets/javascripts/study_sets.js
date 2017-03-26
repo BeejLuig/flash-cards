@@ -5,7 +5,7 @@ $(function(){
 });
 
 function initPage() {
-  Handlebars.registerHelper('flashCardCount', function() {
+  Handlebars.registerHelper("flashCardCount", function() {
     return this.flashCardCount();
   });
 
@@ -48,7 +48,7 @@ function getSearch() {
   $.get("/study_sets.json?search=" + value, function(sets) {
     if(sets.length === 0) {
       $(".col-md-4:not(:last)").html("");
-      $("#searchResults").html('<p>Sorry, no study sets were found!</p><p>Try again or go <a href="/">back</a></p>');
+      $("#searchResults").html("<p>Sorry, no study sets were found!</p><p>Try again or go <a href='/'>back</a></p>");
     } else {
       var str = { studySets: transformStudySets(sets)};
       var source = $("#studySet-template").html();
@@ -83,7 +83,7 @@ function studyModeListener() {
 
 function cardFlipListener() {
   $(document).on("click", ".study_sets.show .flip", function(){
-      $(this).find('.card').toggleClass('flipped');
+      $(this).find(".card").toggleClass("flipped");
       return false;
   });
 }
@@ -94,18 +94,17 @@ function submitNewFlashCardListener() {
     var $form = $(".study_sets.show form");
     var values = $form.serialize();
     var $input = $(".study_sets.show input[type=submit]");
-    var posting = $.post('/flash_cards', values);
+    var posting = $.post("/flash_cards", values);
 
     posting.done(function(data) {
       var source = $("#flashCard-template").html();
       var template = Handlebars.compile(source);
       var flashCard = new FlashCard(data["id"], data["term"], data["definition"], data["study_set"])
-      debugger
       $("#flash-cards").append(template(flashCard));
     });
 
     var $addFlashCard = $("#addFlashCard");
-    $addFlashCard.addClass('hidden');
+    $addFlashCard.addClass("hidden");
     $addFlashCard.find("input[type=text]").val("");
     $input.prop("disabled", false);
 
