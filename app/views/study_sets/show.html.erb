@@ -8,6 +8,7 @@
       <br>
       <br>
       <div id="addFlashCard" class="hidden">
+        <h3>New flash card</h3>
         <%= form_for [current_user, @study_set] do |f| %>
           <div class="form-group">
             <%= f.fields_for @study_set.flash_cards.build do |ff| %>

@@ -27,15 +27,7 @@ class StudySet {
 
 function addFlashCardListener(){
   $(document).on("click", "#addFlashCardButton", function() {
-    var $addFlashCard = $("#addFlashCard");
-    var url = window.location.pathname.split("/");
-    var id = url[4];
-    var ownerId = url[2];
-    var obj = { id: id, ownerId: ownerId };
-    var source = $("#addFlashCard-template").html();
-    var template = Handlebars.compile(source);
-
-    $addFlashCard.html(template(obj));
+    $("#addFlashCard").toggleClass("hidden");
   });
 }
 
@@ -95,7 +87,7 @@ function cardFlipListener() {
 }
 
 function submitNewFlashCardListener() {
-
+  
 }
 
 function attachListeners(){
