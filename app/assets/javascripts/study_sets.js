@@ -87,9 +87,12 @@ function cardFlipListener() {
 }
 
 function submitNewFlashCardListener() {
-  $("form", "#addFlashCard").submit(function(event){
-    event.defaultPrevent();
-    alert("Did it");
+  var $form = $("form", "#addFlashCard");
+  var $input = $("[type=submit]");
+  $(document).on("submit", $form, function(event){
+    event.preventDefault();
+    console.log($input);
+    $input.prop("disabled", false);
   });
 }
 
