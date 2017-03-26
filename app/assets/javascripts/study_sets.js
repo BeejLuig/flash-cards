@@ -94,6 +94,10 @@ function cardFlipListener() {
   });
 }
 
+function submitNewFlashCardListener() {
+
+}
+
 function attachListeners(){
   searchListener();
   studyModeListener();
