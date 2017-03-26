@@ -13,7 +13,7 @@ To check out this project, follow these installation steps:
 * Run `bundle install`
 * Some gems may require additional set up. Refer to their documentation.
 
-Setting up environmental variables for Google OAuth 2[dotenv](https://github.com/bkeepers/dotenv)
+Setting up environmental variables for Google OAuth 2: [dotenv](https://github.com/bkeepers/dotenv)
 
 Setting up Google OAuth 2 Authentication: [omniauth](https://github.com/omniauth/omniauth), [omniauth-google-oauth2](https://github.com/zquestz/omniauth-google-oauth2)
 
