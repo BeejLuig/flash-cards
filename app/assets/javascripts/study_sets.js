@@ -99,7 +99,9 @@ function submitNewFlashCardListener() {
     posting.done(function(data) {
       var source = $("#flashCard-template").html();
       var template = Handlebars.compile(source);
-      $("#flash-cards").append(template(data));
+      var flashCard = new FlashCard(data["id"], data["term"], data["definition"], data["study_set"])
+      debugger
+      $("#flash-cards").append(template(flashCard));
     });
 
     var $addFlashCard = $("#addFlashCard");
