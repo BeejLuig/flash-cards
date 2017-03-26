@@ -83,7 +83,7 @@ function studyModeListener() {
 
 function cardFlipListener() {
   $(document).on("click", ".study_sets.show .flip", function(){
-      $(this).find('.card').toggleClass('flipped')
+      $(this).find('.card').toggleClass('flipped');
       return false;
   });
 }
@@ -97,12 +97,16 @@ function submitNewFlashCardListener() {
     var posting = $.post('/flash_cards', values);
 
     posting.done(function(data) {
-      var source = $("#flashCard-template");
+      var source = $("#flashCard-template").html();
       var template = Handlebars.compile(source);
-
-      //TODO
+      $("#flash-cards").append(template(data));
     });
+
+    var $addFlashCard = $("#addFlashCard");
+    $addFlashCard.addClass('hidden');
+    $addFlashCard.find("input[type=text]").val("");
     $input.prop("disabled", false);
+
   });
 }
 

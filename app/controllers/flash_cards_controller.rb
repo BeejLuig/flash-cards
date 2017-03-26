@@ -12,7 +12,8 @@ class FlashCardsController < ApplicationController
       @study_set = StudySet.find_by_id(params[:study_set_id])
 
       if @study_set.flash_cards.create(flash_card_params)
-        render json: @study_set
+        @flash_card = @study_set.flash_cards.last
+        render json: @flash_card
       else
         render json: { error: "There was an error saving the new flash card"}
       end

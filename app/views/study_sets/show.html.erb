@@ -23,7 +23,7 @@
           </div>
         <% end %>
       </div>
-      <div class="flash-cards">
+      <div id="flash-cards">
         <% @flash_cards.each do |card| %>
           <%= render partial: 'flash_card', locals: {flash_card: card} %>
         <% end %>
