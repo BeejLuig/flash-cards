@@ -87,7 +87,10 @@ function cardFlipListener() {
 }
 
 function submitNewFlashCardListener() {
-  
+  $("form", "#addFlashCard").submit(function(event){
+    event.defaultPrevent();
+    alert("Did it");
+  });
 }
 
 function attachListeners(){
@@ -95,4 +98,5 @@ function attachListeners(){
   studyModeListener();
   cardFlipListener();
   addFlashCardListener();
+  submitNewFlashCardListener();
 }

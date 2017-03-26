@@ -18,7 +18,6 @@ class StudySetsController < ApplicationController
   end
 
   def update
-    binding.pry
     if user_verified?
       @study_set = StudySet.find_by_id(params[:id])
       if @study_set.update(study_set_params)
