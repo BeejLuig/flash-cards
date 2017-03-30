@@ -25,7 +25,7 @@
       <div class="crud-links">
         <br>
         <%= link_to "Back", root_path %>
-        <% if current_user == @user %>
+        <% if current_user == @user && current_user.uid.nil? %>
           | <%= link_to "Edit account", edit_user_registration_path(current_user) %>
         <% end %>
       </div>
