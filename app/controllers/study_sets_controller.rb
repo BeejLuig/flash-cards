@@ -83,7 +83,7 @@ class StudySetsController < ApplicationController
     @study_set = StudySet.find_by_id(params[:id])
     @sort ||= params[:sort]
     @flash_card = FlashCard.new
-    params[:user_id] = current_user.id
+    params[:user_id] = current_user.id if current_user
     if params[:sort] == "Alphabetical"
       @flash_cards = @study_set.flash_cards.sort_by {|fs| fs.term }
     else
