@@ -14,7 +14,7 @@
         <a class="navbar-brand" href="<%= user_path(current_user) %>">
           <img alt="user image" src="<%= current_user.image %>" style="width: 30px; margin: -5px auto;border-radius: 30px;top:5px;">
         </a>
-        <a class="navbar-brand navbar-email" href="<%= user_path(current_user) %>"><%= current_user.email %></a>
+        <a class="navbar-brand navbar-email" href="<%= user_path(current_user) %>"><%= current_user.username %></a>
       <% end %>
     </div>
 

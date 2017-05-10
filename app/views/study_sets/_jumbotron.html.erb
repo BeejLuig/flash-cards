@@ -4,7 +4,7 @@
   <span class="separator"> | </span>
   <span class="flash-card-count"><%= pluralize(study_set.studiers.count, "studier") %></span>
   <span class="separator"> | </span>
-  <%= link_to study_set.owner.email, user_path(study_set.owner), class: "study-set-owner" %></span>
+  <%= link_to study_set.owner.username, user_path(study_set.owner), class: "study-set-owner" %></span>
 
   <h1><%= study_set.title %></h1>
   <h2><%= study_set.description if study_set.description %></h2>
