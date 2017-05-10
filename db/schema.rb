@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170225165246) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "flash_cards", force: :cascade do |t|
     t.integer "study_set_id"
     t.string  "term"
@@ -33,8 +36,8 @@ ActiveRecord::Schema.define(version: 20170225165246) do
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
-    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
   end
 
   create_table "study_sets", force: :cascade do |t|
@@ -66,8 +69,8 @@ ActiveRecord::Schema.define(version: 20170225165246) do
     t.string   "provider"
     t.string   "uid"
     t.string   "image",                  default: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mr._Smiley_Face.svg/2000px-Mr._Smiley_Face.svg.png"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
