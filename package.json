@@ -2,7 +2,8 @@
   "name": "flash-cards",
   "dependencies": {
     "browserify": "^14.0.0",
-    "browserify-incremental": "^3.1.0"
+    "browserify-incremental": "^3.1.0",
+    "babel-preset-es2015": "^6.24.1"
   },
   "license": "MIT",
   "engines": {
