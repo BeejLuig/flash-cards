@@ -127,3 +127,5 @@ function attachListeners(){
   submitNewFlashCardListener();
   sortedStudyModeListener();
 };
+
+export.modules = StudySet
