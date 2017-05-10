@@ -1,4 +1,4 @@
-export class FlashCard {
+class FlashCard {
   constructor(id, term, definition, studySet){
     this.id = id,
     this.term = term,
@@ -6,3 +6,5 @@ export class FlashCard {
     this.studySet = studySet
   }
 }
+
+module.exports = FlashCard
