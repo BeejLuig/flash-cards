@@ -1,4 +1,4 @@
-class FlashCard {
+export default class FlashCard {
   constructor(id, term, definition, studySet){
     this.id = id,
     this.term = term,

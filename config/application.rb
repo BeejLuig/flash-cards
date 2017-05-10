@@ -35,5 +35,8 @@ module FlashCards
     #
     # defaults to Rails.env
     config.browserify_rails.node_env = "production"
+
+    #include es6
+    config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 ] --extensions .es6 ]"
   end
 end
